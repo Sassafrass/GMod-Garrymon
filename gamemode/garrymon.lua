@@ -1,22 +1,3 @@
-GTYPE_NORMAL	= 1
-GTYPE_FIGHTING 	= 2
-GTYPE_FLYING 	= 4
-GTYPE_POISON 	= 8
-GTYPE_GROUND 	= 16
-GTYPE_ROCK 		= 32
-GTYPE_BUG 		= 64
-GTYPE_GHOST 	= 128
-GTYPE_STEEL 	= 256
-GTYPE_FIRE 		= 512
-GTYPE_WATER 	= 1024
-GTYPE_GRASS 	= 2048
-GTYPE_ELECTRIC 	= 4096
-GTYPE_PSYCHIC	= 8192
-GTYPE_ICE 		= 16384
-GTYPE_DRAGON 	= 32768
-GTYPE_DARK 		= 65536
-GTYPE_FAIRY 	= 131072
-
 local gtypeIneffective = {}
 gtypeIneffective[GTYPE_NORMAL] 		= bit.bor( GTYPE_ROCK, GTYPE_STEEL )
 gtypeIneffective[GTYPE_FIGHTING] 	= bit.bor( GTYPE_POISON, GTYPE_FLYING, GTYPE_PSYCHIC, GTYPE_BUG, GTYPE_FAIRY )
@@ -37,25 +18,25 @@ gtypeIneffective[GTYPE_DRAGON]		= bit.bor( GTYPE_STEEL )
 gtypeIneffective[GTYPE_DARK]		= bit.bor( GTYPE_FIGHTING, GTYPE_DARK, GTYPE_FAIRY )
 gtypeIneffective[GTYPE_FAIRY]		= bit.bor( GTYPE_FIRE, GTYPE_POISON, GTYPE_STEEL )
 
-local gtypeSupereffective = {}
-gtypeSupereffective[GTYPE_NORMAL] 	= 0
-gtypeSupereffective[GTYPE_FIGHTING] = bit.bor( GTYPE_NORMAL, GTYPE_ICE, GTYPE_ROCK, GTYPE_STEEL )
-gtypeSupereffective[GTYPE_FLYING] 	= bit.bor( GTYPE_GRASS, GTYPE_FIGHTING, GTYPE_BUG )
-gtypeSupereffective[GTYPE_POISON] 	= bit.bor( GTYPE_GRASS, GTYPE_FAIRY )
-gtypeSupereffective[GTYPE_GROUND]	= bit.bor( GTYPE_FIRE, GTYPE_ELECTRIC, GTYPE_POISON, GTYPE_ROCK, GTYPE_STEEL )
-gtypeSupereffective[GTYPE_ROCK]		= bit.bor( GTYPE_FIRE, GTYPE_ICE, GTYPE_FLYING, GTYPE_BUG )
-gtypeSupereffective[GTYPE_BUG]		= bit.bor( GTYPE_GRASS, GTYPE_PSYCHIC, GTYPE_DARK )
-gtypeSupereffective[GTYPE_GHOST]	= bit.bor( GTYPE_PSYCHIC, GTYPE_GHOST )
-gtypeSupereffective[GTYPE_STEEL]	= bit.bor( GTYPE_ICE, GTYPE_ROCK, GTYPE_FAIRY )
-gtypeSupereffective[GTYPE_FIRE]		= bit.bor( GTYPE_GRASS, GTYPE_ICE, GTYPE_BUG, GTYPE_STEEL )
-gtypeSupereffective[GTYPE_WATER]	= bit.bor( GTYPE_FIRE, GTYPE_GROUND, GTYPE_ROCK )
-gtypeSupereffective[GTYPE_GRASS]	= bit.bor( GTYPE_WATER, GTYPE_GROUND, GTYPE_ROCK )
-gtypeSupereffective[GTYPE_ELECTRIC]	= bit.bor( GTYPE_WATER, GTYPE_FLYING )
-gtypeSupereffective[GTYPE_PSYCHIC]	= bit.bor( GTYPE_FIGHTING, GTYPE_POISON )
-gtypeSupereffective[GTYPE_ICE]		= bit.bor( GTYPE_GRASS, GTYPE_GROUND, GTYPE_FLYING, GTYPE_DRAGON )
-gtypeSupereffective[GTYPE_DRAGON]	= bit.bor( GTYPE_DRAGON )
-gtypeSupereffective[GTYPE_DARK]		= bit.bor( GTYPE_PSYCHIC, GTYPE_GHOST )
-gtypeSupereffective[GTYPE_FAIRY]	= bit.bor( GTYPE_FIGHTING, GTYPE_DRAGON, GTYPE_DARK )
+local gtypeEffective = {}
+gtypeEffective[GTYPE_NORMAL] 	= 0
+gtypeEffective[GTYPE_FIGHTING] = bit.bor( GTYPE_NORMAL, GTYPE_ICE, GTYPE_ROCK, GTYPE_STEEL )
+gtypeEffective[GTYPE_FLYING] 	= bit.bor( GTYPE_GRASS, GTYPE_FIGHTING, GTYPE_BUG )
+gtypeEffective[GTYPE_POISON] 	= bit.bor( GTYPE_GRASS, GTYPE_FAIRY )
+gtypeEffective[GTYPE_GROUND]	= bit.bor( GTYPE_FIRE, GTYPE_ELECTRIC, GTYPE_POISON, GTYPE_ROCK, GTYPE_STEEL )
+gtypeEffective[GTYPE_ROCK]		= bit.bor( GTYPE_FIRE, GTYPE_ICE, GTYPE_FLYING, GTYPE_BUG )
+gtypeEffective[GTYPE_BUG]		= bit.bor( GTYPE_GRASS, GTYPE_PSYCHIC, GTYPE_DARK )
+gtypeEffective[GTYPE_GHOST]	= bit.bor( GTYPE_PSYCHIC, GTYPE_GHOST )
+gtypeEffective[GTYPE_STEEL]	= bit.bor( GTYPE_ICE, GTYPE_ROCK, GTYPE_FAIRY )
+gtypeEffective[GTYPE_FIRE]		= bit.bor( GTYPE_GRASS, GTYPE_ICE, GTYPE_BUG, GTYPE_STEEL )
+gtypeEffective[GTYPE_WATER]	= bit.bor( GTYPE_FIRE, GTYPE_GROUND, GTYPE_ROCK )
+gtypeEffective[GTYPE_GRASS]	= bit.bor( GTYPE_WATER, GTYPE_GROUND, GTYPE_ROCK )
+gtypeEffective[GTYPE_ELECTRIC]	= bit.bor( GTYPE_WATER, GTYPE_FLYING )
+gtypeEffective[GTYPE_PSYCHIC]	= bit.bor( GTYPE_FIGHTING, GTYPE_POISON )
+gtypeEffective[GTYPE_ICE]		= bit.bor( GTYPE_GRASS, GTYPE_GROUND, GTYPE_FLYING, GTYPE_DRAGON )
+gtypeEffective[GTYPE_DRAGON]	= bit.bor( GTYPE_DRAGON )
+gtypeEffective[GTYPE_DARK]		= bit.bor( GTYPE_PSYCHIC, GTYPE_GHOST )
+gtypeEffective[GTYPE_FAIRY]	= bit.bor( GTYPE_FIGHTING, GTYPE_DRAGON, GTYPE_DARK )
 
 local gtypeNoeffect = {}
 gtypeNoeffect[GTYPE_NORMAL] 	= GTYPE_GHOST
@@ -77,27 +58,39 @@ gtypeNoeffect[GTYPE_DRAGON]		= GTYPE_FAIRY
 gtypeNoeffect[GTYPE_DARK]		= 0
 gtypeNoeffect[GTYPE_FAIRY]		= 0
 
-local gtypeToString = {
-	GTYPE_NORMAL	= "normal",
-	GTYPE_FIGHTING 	= "fighting",
-	GTYPE_FLYING 	= "flying",
-	GTYPE_POISON 	= "poison",
-	GTYPE_GROUND 	= "ground",
-	GTYPE_ROCK 		= "rock",
-	GTYPE_BUG 		= "bug",
-	GTYPE_GHOST 	= "ghost",
-	GTYPE_STEEL 	= "steel",
-	GTYPE_FIRE 		= "fire",
-	GTYPE_WATER 	= "water",
-	GTYPE_GRASS 	= "grass",
-	GTYPE_ELECTRIC 	= "electric",
-	GTYPE_PSYCHIC	= "psychic",
-	GTYPE_ICE 		= "ice",
-	GTYPE_DRAGON 	= "dragon",
-	GTYPE_DARK 		= "dark",
-	GTYPE_FAIRY 	= "fairy"
-}
-function GM:GarryTypeToString( gtype )
+local gtypeToString = {}
+gtypeToString[GTYPE_NORMAL]		= "normal"
+gtypeToString[GTYPE_FIGHTING]	= "fighting"
+gtypeToString[GTYPE_FLYING]		= "flying"
+gtypeToString[GTYPE_POISON]		= "poison"
+gtypeToString[GTYPE_GROUND]		= "ground"
+gtypeToString[GTYPE_ROCK]		= "rock"
+gtypeToString[GTYPE_BUG]		= "bug"
+gtypeToString[GTYPE_GHOST]		= "ghost"
+gtypeToString[GTYPE_STEEL]		= "steel"
+gtypeToString[GTYPE_FIRE]		= "fire"
+gtypeToString[GTYPE_WATER]		= "water"
+gtypeToString[GTYPE_GRASS]		= "grass"
+gtypeToString[GTYPE_ELECTRIC]	= "electric"
+gtypeToString[GTYPE_PSYCHIC]	= "psychic"
+gtypeToString[GTYPE_ICE]		= "ice"
+gtypeToString[GTYPE_DRAGON]		= "dragon"
+gtypeToString[GTYPE_DARK]		= "dark"
+gtypeToString[GTYPE_FAIRY]		= "fairy"
+
+local function countSetBits( i )
+	i = i - bit.band(bit.rshift(i, 1), 0x55555555)
+    i = bit.band(i, 0x33333333) + bit.band(bit.rshift(i, 2), 0x33333333)
+    return bit.rshift(bit.band((i + bit.rshift(i, 4)), 0x0F0F0F0F) * 0x01010101, 24);
+end
+function GM:GetTypeEffectiveness( gtype_ability, gtype_target )
+	if bit.band( gtypeNoeffect[gtype_ability], gtype_target ) ~= 0 then return 0 end
+	local effectiveness = math.max( countSetBits( bit.band( gtypeEffective[gtype_ability], gtype_target ) ) * 2, 1 )
+	effectiveness = effectiveness * 1 / math.max( countSetBits( bit.band( gtypeIneffective[gtype_ability], gtype_target ) ) * 2, 1 )
+	return effectiveness
+end
+
+function GM:GTypeToString( gtype )
 	return gtypeToString[gtype]
 end
 
@@ -108,19 +101,13 @@ function GM:CalculateStat( gmon, statKey )
 	local stat = gmon.stats[ statKey ]
 	local multiplier = stat.stage == 0 and 1 or (statKey < STAT_ACCURACY and StageMultipliers1 or StageMultipliers2)[math.abs(stat.stage)]
 	if stat.stage < 0 then
-		multiplier = -multiplier
+		multiplier = 1 / multiplier
+	end
+	if statKey == STAT_EVASION then
+		multiplier = 1 / multiplier
 	end
 	return stat.value * multiplier
 end
-
-STAT_ATTACK = 1
-STAT_DEFENSE = 2
-STAT_SPATTACK = 3
-STAT_SPDEFENSE = 4
-STAT_SPEED = 5
-STAT_ACCURACY = 6
-STAT_EVASION = 7
-STAT_RANDOM = -1
 
 local function Stat( value )
 	return {value = value, stage = 0}
@@ -139,13 +126,13 @@ local function Stats( attack, defense, spattack, spdefense, speed, accuracy, eva
 end
 
 local function Ability( abilityKey, minLvl )
-	return {key = abilityKey, gp = GM.abilities[abilityKey].gp, minLvl = minLvl}
+	return {key = abilityKey, gp = GM.abilities[abilityKey].gp, minLvl = minLvl or 0, stage = 0}
 end
  
-local function Garrymon( name, type, hp, attack, defense, spattack, spdefense, speed, abilities, evolves )
+local function Garrymon( name, gtype, hp, attack, defense, spattack, spdefense, speed, abilities, evolves )
     return {
         name = name,
-        type = type,
+        gtype = gtype,
         hp = hp,
         maxhp = hp,
         stats = Stats( attack, defense, spattack, spdefense, speed, 1.0, 1.0 ),
@@ -167,11 +154,11 @@ GM.garrymons = {
     Umlaut = Garrymon( "Umlaut", GTYPE_WATER, 44, 48, 65, 50, 64, 43, 
     	  { Ability("Tackle"), Ability("TailWhip"), Ability("WaterGun", 7), Ability("Withdraw", 10), Ability("Bubble", 13),
 			Ability("Bite", 16), Ability("RapidSpin", 19), Ability("Protect", 22), Ability("WaterPulse", 25), Ability("AquaTail", 28), 
-			Ability("SkullBash", 31), Ability("IronDefense", 34), Ability("RainDance", 37), Ability("Hydropump", 40) }, 
+			Ability("SkullBash", 31), Ability("IronDefense", 34), Ability("RainDance", 37), Ability("HydroPump", 40) }, 
 			{16, "Ampersplash", 36, "Hydrophen"} ),
     Firedash = Garrymon( "Firedash", GTYPE_FIRE, 39, 52, 43, 60, 50, 65, 
-    	  { Ability("Scratch"), Ability("Growl"), Ability("Ember", 7), Ability("SmokeScreen", 10), Ability("DragonRage", 16),
+    	  { Ability("Scratch"), Ability("Growl"), Ability("Ember", 7), Ability("Smokescreen", 10), Ability("DragonRage", 16),
     	 	Ability("ScaryFace", 19), Ability("FireFang", 25), Ability("FlameBurst", 28), Ability("Slash", 34), Ability("Flamethrower", 37),
-    	 	Ability("FireSpin", 43), Ability("Inferno", 46),
+    	 	Ability("FireSpin", 43), Ability("Inferno", 46) },
     	 	{16, "Flametheon", 36, "Blazer"} )
 }

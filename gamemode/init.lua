@@ -8,6 +8,7 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("cl_battleinfo.lua")
 include("shared.lua")
 include("items.lua")
+include("abilities.lua")
 include("garrymon.lua")
 
 -- Add resources here
@@ -129,10 +130,10 @@ function GM:UseAbility( ability, user, target )
     local abilityAttr = self.abilities[ability.key]
     self:ActionMessage( user.name .. " uses " .. abilityAttr.name .. "!" )
     if self:HitFormula( abilityAttr, user, target ) then
-        abilityAttr.handler.OnHit( abilityAttr, user, target )
+        abilityAttr.handler.OnHit( ability, user, target )
         ability.gp = ability.gp - 1
     else
-        self:ActionMessage( ability.name .. " missed!" )
+        self:ActionMessage( abilityAttr.name .. " missed!" )
     end
 end
  
@@ -141,7 +142,9 @@ function GM:ChooseAttack( user )
     for _, ability in ipairs(user.abilities) do
         if ability.minLvl > user.lvl then break end
         local abilityAttr = GAMEMODE.abilities[ability.key]
-        table.insert( abilityChoices, abilityAttr.name .. " (" .. ability.gp .. "/" .. abilityAttr.gp .. ")" )
+        if abilityAttr.handler then
+            table.insert( abilityChoices, abilityAttr.name .. " (" .. ability.gp .. "/" .. abilityAttr.gp .. ")" )
+        end
     end
     table.insert( abilityChoices, "Back" )
     while true do
@@ -149,7 +152,7 @@ function GM:ChooseAttack( user )
         if choice < #abilityChoices then
             local ability = user.abilities[choice]
             if ability.gp == 0 then
-                self:ActionMessage("Not enough gp")
+                self:ActionMessage("Not enough GP")
             else
                 return ability
             end
@@ -201,7 +204,7 @@ function GM:UseItem( item )
                     local ability = self:ChooseAttack( gmon )
                     if ability then
                         ability.gp = math.min(ability.gp + item.healAmount, ability.maxgp)
-                        self:ActionMessage( gmon.name .. "'s " .. ability.name .. " ability's gp was raised " .. item.healAmount .. " points" )
+                        self:ActionMessage( gmon.name .. "'s " .. ability.name .. " ability's GP was raised " .. item.healAmount .. " points" )
                         break
                     end
                 end
@@ -223,7 +226,6 @@ function GM:FightMenu( gmon, enemy )
             end
         elseif choice == 2 then
             local item = self:ChooseItem()
-            print( item )
             if item and self:UseItem( item ) then
                 break
             end
@@ -245,10 +247,17 @@ local function gainFormula( gmon, fainted )
 end
  
 function GM:IncreaseStat( gmon, name, key, amount )
-    local oldValue = gmon[key]
-    gmon[key] = gmon[key] + amount
+    local oldValue, newValue
+    if type(key) == "string" then
+        oldValue = gmon[key]
+        newValue = oldValue + amount
+    else
+        oldValue = gmon.stats[key].value
+        newValue = oldValue + amount
+        gmon.stats[key].value = newValue
+    end
     self:ActionMessage( name .. " (" .. oldValue .. "</c><c=0,255,0>+" .. amount ..
-        "</c><c=255,0,0>) -> </c><c=255,255,0>" .. gmon[key] .. "</c><c=255,0,0>" )
+        "</c><c=255,0,0>) -> </c><c=255,255,0>" .. newValue .. "</c><c=255,0,0>" )
 end
  
 function GM:GainExperience( gmon, amount )
@@ -259,11 +268,11 @@ function GM:GainExperience( gmon, amount )
         gmon.maxexp = math.pow( gmon.lvl, 3 )
         self:IncreaseStat( gmon, "Lvl", "lvl", 1 )
         self:IncreaseStat( gmon, "Hp", "maxhp", 4 )
-        self:IncreaseStat( gmon, "Att", "attack", 4 )
-        self:IncreaseStat( gmon, "Def", "defense", 4 )
-        self:IncreaseStat( gmon, "Sp.Att", "spattack", 3 )
-        self:IncreaseStat( gmon, "Sp.Def", "spdefense", 2 )
-        self:IncreaseStat( gmon, "Spd", "speed", 3 )
+        self:IncreaseStat( gmon, "Att", STAT_ATTACK, 4 )
+        self:IncreaseStat( gmon, "Def", STAT_DEFENSE, 4 )
+        self:IncreaseStat( gmon, "Sp.Att", STAT_SPATTACK, 3 )
+        self:IncreaseStat( gmon, "Sp.Def", STAT_SPDEFENSE, 2 )
+        self:IncreaseStat( gmon, "Spd", STAT_SPEED, 3 )
         if gmon.lvl > gmon.evolves[1] then
             self:ChoiceMessage( "Do you want " .. gmon.name .. " to evolve?" )
             local choice = self:DoChoice( "Yes", "No" )
@@ -294,7 +303,7 @@ function GM:Fight(gmon, enemy)
         else
             -- ARTIFICIAL INTELLIGENCE?!
             for _, ability in RandomPairs(enemy.abilities) do
-                if ability.gp > 0 then
+                if ability.gp > 0 and self.abilities[ability.key].handler and enemy.lvl >= ability.minLvl then
                     self:UseAbility( ability, enemy, gmon )
                     break
                 end
@@ -356,7 +365,7 @@ function GM:SetState( state )
                 playerChoice = self.garrymons.Firedash
                 rivalChoice = self.garrymons.Umlaut
             end
-            pl:ChatPrint( "You have chosen " .. playerChoice.name .. " a " .. self:GarryTypeToString(playerChoice.type) .. " type garrymon." )
+            pl:ChatPrint( "You have chosen " .. playerChoice.name .. " a " .. self:GTypeToString(playerChoice.gtype) .. " type garrymon." )
             pl:ChatPrint( "Are you sure?" )
             local choice = self:DoChoice( "Yes", "No" )
             if choice == 1 then
@@ -370,10 +379,15 @@ function GM:SetState( state )
         self:GiveItem( "PotionHealing" )
         self:GiveItem( "PotionHealing" )
         self:GiveItem( "BallGarry" )
+        wait( 1 )
         self:ActionMessage("An unknown person barges into the room")
+        wait( 1 )
         self:AddChatDelayed("???", "Yo pops, let me get my garrymon!")
+        wait( 1 )
         self:ActionMessage("The mysterious person grabs one of the garryballs")
+        wait( 2 )
         self:ActionMessage("He turns to you with his garryball in hand")
+        wait( 2 )
         self:AddChatDelayed("Javier", "I'm Javier. Who the fuck are you? Wanna fight?")
         local choice = self:DoChoice( "Yes", "No" )
         if choice == 2 then
@@ -411,7 +425,10 @@ end
 function GM:PlayerSay( pl, text, isTeam )
 	if waitEndTime then
 		waitEndTime = nil
-		coroutine.resume( self.thread )
+		local ok, res = coroutine.resume( self.thread )
+        if not ok then
+            pl:ChatPrint( res )
+        end
 	end
 	
     local ok, res = coroutine.resume( self.thread, text )
@@ -424,6 +441,9 @@ end
 function GM:Think()
 	if waitEndTime and CurTime() >= waitEndTime then
 		waitEndTime = nil
-		coroutine.resume( self.thread )
+		local ok, res = coroutine.resume( self.thread )
+        if not ok then
+            pl:ChatPrint( res )
+        end
 	end
 end
