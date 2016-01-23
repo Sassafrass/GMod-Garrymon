@@ -1,0 +1,7 @@
+"garrymon"
+{
+	"base"		"base"
+	"title"		"Garrymon"
+	"maps"		"^gm_"
+	"menusystem"	"1"
+}
