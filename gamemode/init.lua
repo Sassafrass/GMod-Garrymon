@@ -125,22 +125,29 @@ function GM:DisplayFight( gmon, enemy )
 	net.Send( pl )
 end
  
-function GM:UseAbility( ability, gmon, enemy )
-    self:ActionMessage( gmon.name .. " uses " .. ability.name .. "!" )
-    enemy.hp = math.max( enemy.hp - ability.dmg, 0 )
-    ability.gp = ability.gp - 1
+function GM:UseAbility( ability, user, target )
+    local abilityAttr = self.abilities[ability.key]
+    self:ActionMessage( user.name .. " uses " .. abilityAttr.name .. "!" )
+    if self:HitFormula( abilityAttr, user, target ) then
+        abilityAttr.handler.OnHit( abilityAttr, user, target )
+        ability.gp = ability.gp - 1
+    else
+        self:ActionMessage( ability.name .. " missed!" )
+    end
 end
  
-function GM:ChooseAttack( abilities )
+function GM:ChooseAttack( user )
     local abilityChoices = {}
-    for _, ability in ipairs(abilities) do
-        table.insert( abilityChoices, ability.name .. " (" .. ability.gp .. "/" .. ability.maxgp .. ")" )
+    for _, ability in ipairs(user.abilities) do
+        if ability.minLvl > user.lvl then break end
+        local abilityAttr = GAMEMODE.abilities[ability.key]
+        table.insert( abilityChoices, abilityAttr.name .. " (" .. ability.gp .. "/" .. abilityAttr.gp .. ")" )
     end
     table.insert( abilityChoices, "Back" )
     while true do
         local choice = self:DoChoice( unpack( abilityChoices ) )
         if choice < #abilityChoices then
-            local ability = abilities[choice]
+            local ability = user.abilities[choice]
             if ability.gp == 0 then
                 self:ActionMessage("Not enough gp")
             else
@@ -191,7 +198,7 @@ function GM:UseItem( item )
                     self:ActionMessage( gmon.name .. " healed " .. healAmount .. " points to " .. gmon.hp )
                     break
                 elseif item.potionType == POTION_TYPE_GP then
-                    local ability = self:ChooseAttack( gmon.abilities )
+                    local ability = self:ChooseAttack( gmon )
                     if ability then
                         ability.gp = math.min(ability.gp + item.healAmount, ability.maxgp)
                         self:ActionMessage( gmon.name .. "'s " .. ability.name .. " ability's gp was raised " .. item.healAmount .. " points" )
@@ -209,7 +216,7 @@ function GM:FightMenu( gmon, enemy )
     while true do
         local choice = self:DoChoice( "Attack", "Items", "Pokemon", "Run" )
         if choice == 1 then
-            local attack = self:ChooseAttack( gmon.abilities )
+            local attack = self:ChooseAttack( gmon )
             if attack then
                 self:UseAbility( attack, gmon, enemy )
                 break
@@ -349,7 +356,7 @@ function GM:SetState( state )
                 playerChoice = self.garrymons.Firedash
                 rivalChoice = self.garrymons.Umlaut
             end
-            pl:ChatPrint( "You have chosen " .. playerChoice.name .. " a " .. playerChoice.type .. " type garrymon." )
+            pl:ChatPrint( "You have chosen " .. playerChoice.name .. " a " .. self:GarryTypeToString(playerChoice.type) .. " type garrymon." )
             pl:ChatPrint( "Are you sure?" )
             local choice = self:DoChoice( "Yes", "No" )
             if choice == 1 then

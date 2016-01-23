@@ -13,6 +13,9 @@ luac.out
 *.obj
 *.elf
 
+# Floo files
+*.floo*
+
 # Precompiled Headers
 *.gch
 *.pch
