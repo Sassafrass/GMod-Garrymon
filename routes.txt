@@ -1,0 +1,436 @@
+Route 1
+-------
+POKEMON
+	(55%) Pidgey Level 2-5
+	(45%) Rattata Level 2-4
+ITEMS
+	Potion
+TRAINERS
+	N/A
+
+Route 2
+-------
+POKEMON
+	(15%) Caterpie Level 3-5
+	(15%) Weedle Level 3-5
+	(40%) Pidgey Level 3-5
+	(45%) Rattata Level 2-5
+ITEMS
+	HM05 (Flash)- Obtained from Professor's aide in the gate as a reward for getting 10 pokemon in pokedex
+	Revive
+	Full Restore
+	Moon Stone
+TRAINERS
+	N/A
+
+Route 3
+-------
+POKEMON
+	(50%) Pidgey Level 6-8
+	(40%) Spearow LEvel 5-8
+	(10%) Jigglypuff Level 3, 5, 7
+ITEMS
+	Hyper Potion
+TRAINERS
+	Lass ($135)- Pidgey Lv 9, Pidgey Lv 9
+	Bug Catcher ($100)- Caterpie Lv 10, Weedle Lv 10, Caterpie Lv 10
+	Youngster ($165)- Rattata Lv 11, Ekans Lv 11
+	Bug Catcher ($90)- Weedle Lv 9, Kakuna Lv 9, Caterpie Lv 9, Metapod Lv 9
+	Youngster ($210)- Spearow Lv 14
+	Lass ($150)- Rattata Lv 10, Nidoran Lv 10
+	Bug Catcher ($110)- Caterpie Lv 11, Metapod Lv 11
+	Lass ($210)- Jigglypuf Lv 14
+
+Route 4
+-------
+POKEMON
+	(45%) Rattata Level 8, 10, 12
+	(30%) Spearow Level 8, 10, 12
+	(25%) Ekans Level 6, 8, 10, 12
+	(25%) Sandshrew Level 6, 8, 10, 12
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(33%) Psyduck Level 15
+	(33%) Krabby Level 15
+	(33%) Goldeen Level 15
+ITEMS
+	TM04 (Whirlwind)- on the second highest hill
+	TM05 (Roar)- On the second highest hill
+	Ultra ball
+TRAINERS
+	Lass ($465)- Paras Level 31, Paras Level 31, Parasect Level 31  REQUIRES SURF
+
+Route 5
+-------
+POKEMON
+	(35%) Pidgey Level 13, 15-16
+	(40%) Oddish Level 13, 15-16
+	(25%) Meowth Level 10, 12, 14, 16
+	(25%) Mankey Level 10, 12, 14, 16
+	(40%) Bellsprout Level 13, 15-16
+ITEMS
+	N/A
+TRAINERS
+	N/A
+
+Route 6
+-------
+POKEMON
+	(35%) Pidgey Level 13, 15-16
+	(40%) Oddish Level 13, 15-16
+	(25%) Meowth Level 10, 12, 14, 16
+	(25%) Mankey Level 10, 12, 14, 16
+	(40%) Bellsprout Level 13, 15-16 
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(50%) Shellder Level 15
+	(50%) Krabby Level 15
+ITEMS
+	TM62 (Silver Wind)- Lower left part of the route
+	Rare Candy
+TRAINERS
+	Bug Catcher ($160)- Weedle Lv 16, Caterpie Lv 16, Weedle Lv 16
+	Jr. Trainer ($400)- Squirtle Lv 20
+	Jr. Trainer ($320)- Rattata Lv 16, Pikachu Lv 16
+	Bug Catcher ($200)- Butterfree Lv 20
+	Jr. Trainer ($320)- Pidgey Lv 16, Pidgey Lv 16, Pidgey Lv 16
+	Jr. Trainer ($320)- Spearow Lv 16, Raticate Lv 16
+
+Route 7
+-------
+POKEMON
+	(35%) Pidgey Level 19, 22
+	(10%) Vulpix Level 18, 20
+	(25%) Oddish Level 19, 22
+	(30%) Meowth Level 17-20
+	(30%) Mankey Level 17-20
+	(10%) Growlithe Level 18, 20
+	(25%) Bellsprout Level 19, 22
+ITEMS
+	N/A
+TRAINERS
+	N/A
+
+Route 8
+-------
+POKEMON
+	(35%) Pidgey Level 18, 20
+	(20%) Ekans Level 17, 19
+	(20%) Sandshrew Level 17, 19
+	(20%) Vuplix Level 15-18
+	(25%) Meowth Level 18, 20
+	(25%) Mankey Level 18, 20
+	(20%) Growlithe Level 15-18
+ITEMS
+	TM41 (Torment)- South of the bikers
+TRAINERS
+	Lass ($330)- Clefairy Lv 22, Clefairy Lv 22
+	Gambler ($1680)- Growlithe Lv 24, Vuplix Lv 24
+	Super Nerd ($550)- Grimer Lv 22, Muk Lv 22, Grimer Lv 22
+	Lass ($345)- Nidoran Lv 23, Nidorina Lv 23
+	Super Nerd ($650)- Koffing Lv 26
+	Lass ($360)- Meowth Lv 24, Meowth Lv 24, Meowth Lv 24
+	Lass ($285)- Pidgey Lv 19, Rattata Lv 19, Nidoran Lv 19, Meowth Lv 19, Pikachu Lv 19
+	Gambler ($1540)- Poliwag Lv 22, Poliwag Lv 22, Poliwhirl Lv 22
+	Super Nerd ($500)- Voltorb Lv 20, Koffing Lv 20, Voltorb Lv 22, Magnemite Lv 20
+
+Route 9
+-------
+POKEMON
+	(45%) Rattata Level 14, 16-17
+	(30%) Spearow Level 13, 16-17
+	(25%) Ekans Level 11, 13, 15, 17
+	(25%) Sandshrew Level 11, 13, 15, 17
+ITEMS
+	TM30 (Teleport)- In the sourthwest corner of the route
+	TM40 (Aerial Ace)- In the southwest corner of the route
+	TM91 (Flash Cannon)- Northeast corner of the route past Hiker Eoin (REQUIRES CUT)
+	Rare Candy
+	Max Potion
+TRAINERS
+	Jr. Trainer ($360)- Oddish Lv 18, Bellsprout Lv 18, Oddish Lv 18, Bellsprout Lv 18
+	Hiker ($700)- Machop Lv 20, Onix Lv 20
+	Bug Catcher ($190)- Beedrill Lv 19, Beedrill Lv 19
+	Jr. Trainer ($420)- Growlithe Lv 21, Charmander Lv 21
+	Hiker ($735)- Geodude Lv 21, Onix Lv 21
+	Bug Catcher ($200)- Caterpie Lv 20, Weedle Lv 20, Venonat Lv 20
+	Jr. Trainer ($380)- Rattata Lv 19, Diglett Lv 19, Ekans, Lv 19, Sandshrew Lv 19
+	Hiker ($700)- Geodude Lv 20, Machop Lv 20, Geodude Lv 20
+	Jr. Trainer ($460)- Meowth Lv 23
+
+Route 10
+-------
+POKEMON
+	(30%) Spearow Level 13, 16-17
+	(25%) Ekans Level 11, 13, 15, 17
+	(25%) Sandshrew Level 11, 13, 15, 17
+	(45%) Voltorb Level 14, 16-17
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(50%) Poliwhirl Level 23
+	(50%) Slowpoke Level 15
+ITEMS
+	TM69 (Roch Polish)- On a ledge in the venter of the southern portion of the route.
+	Super Potion
+TRAINERS
+	Jr. Trainer ($400)- Pikachu Lv 20, Clefairy Lv 20
+	PokeManiac (%1500)- Rhyhorn Lv 30, Lickitung Lv 30 (REQUIRES SURF)
+	Jr. Trainer ($420)- Pidgey Lv 21, Pidgeotto Lv 21
+	Hiker ($735)- Geodude Lv 21, Onix Lv 21
+	Hiker ($665)- Onix Lv 19, Graveler Lv 19
+	PokeManiac ($1000)- Cubone Lv 20, Slowpoke Lv 20
+
+Route 11
+-------
+POKEMON
+	(30%) Spearow Level 13, 15, 17
+	(45%) Ekans Level 12, 14-15
+	(45%) Sandshrew Level 12, 14-15
+	(25%) Drowzee Level  9, 11, 13, 15
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(50%) Shellder Level 15
+	(50%) Krabby Level 15
+ITEMS
+	TM86 (Grass Knot)- Northeast corner of route
+	Escape Rope
+	Great Ball
+	Revive 
+	Revive
+TRAINERS
+	Gambler ($1260)- Poliwag Lv 18, Horsea Lv 18
+	Youngster ($315)- Ekans Lv 21
+	Youngster ($285)- Sandshrew Lv 19, Zubat Lv 19
+	Youngster ($270)- Nidoran Lv 18, Nidorino Lv 18
+	Gambler ($1260)- Bellsprout Lv 18, Oddish Lv 18
+	Gambler ($1260)- Growlithe Lv 18, Vulpix Lv 18
+	Engineer ($1050)- Magnemite Lv 21
+	Youngster ($255)- Rattata Lv 17, Rattata Lv 17, Raticate Lv 17
+	Gambler ($1260)- Voltorb Lv 18, Magnemite Lv 18
+	Engineer ($900)- Magnemite Lv 18, Magnemite Lv 18, Magneton Lv 18
+
+Route 12
+-------
+POKEMON
+	(35%) Pidgey Level 23, 25, 27
+	(40%) Oddish Level 22, 24, 26
+	(5%) Gloom Level 29
+	(20%) Venonat Level 24, 25
+	(40%) Bellsprout Level 22, 24, 26
+	(5%) Weepingbell Level 28, 30
+	(100%) SNORLAX LEVEL 30 BLOCKING PATH
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Tentacool Level 5
+	(25%) Krabby Level 15
+ITEMS
+	TM39(Swift)- From the girl on the second floor of the lavender gate
+	TM16(Pay Day)- On the island near the lavender gate
+	TM27 (Return)- From the girl on the second floor of the lavender gate
+	TM48 (Skill Swap)- On the island near the lavender gate (REQUIRES SURF)
+	Hyper Potion
+	Super Rod
+	Hyper Potion
+	Leftovers
+	Rare Candy
+TRAINERS
+--North of Snorlax
+	Fisherman ($770)- Goldeen Lv 22, Poliwag Lv 22, Goldeen Lv 22
+	Fisherman ($840)- Tentacool Lv 24, Goldeen Lv 24
+	Fisherman ($945)- Goldeen Lv 27
+	Fisherman ($735)- Poliwag Lv 21, Shellder Lv 21, Goldeen Lv 21, Horsea Lv 21
+--South of Snorlax
+	Rocker ($725)- Voltorb Lv 29, Electrode Lv 29
+	Jr. Trainer ($840)- Nidoran Lv 29, Nidorino Lv 29
+	Fisherman ($840)- Magikarp Lv 24, Magikarp Lv 24
+
+Route 13
+-------
+POKEMON
+	(30%) Pidgey Level 25, 27
+	(40%) Oddish Level 22, 24, 26
+	(5%) Gloom Level 28, 30
+	(20%) Venonat Level 24, 26
+	(40%) Bellsprout Level 22, 24, 26
+	(5%) Weepinbell Level 28, 30
+	(5%) Ditto Level 25
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Tentacool Level 5
+	(25%) Krabby Level 15
+ITEMS
+	N/A
+TRAINERS
+	Jr, Trainer ($560)- Goldeen Lv 28, Poliwag Lv 28, Horsea Lv 28
+	Bird Keeper ($725)- Pidgey Lv 29, Pidgeotto Lv 29
+	Jr. Trainer ($480)- Pidgey Lv 24, Meowth Lv 24, Rattata Lv 24, Pikachu Lv 24, Meowth Lv 24
+	Beauty ($1890)- Rattata Lv 27, Pikachu Lv 27, Rattata Lv 27
+	Beauty ($2030)- Clefairy Lv 29, Meowth Lv 29
+	Jr. Trainer ($600)- Poliwag Lv 30, Poliwag Lv 30
+	Jr. Trainer ($540)- Pidgey Lv 27, Meowth Lv 27, Pidgey Lv 27, Pidgeotto Lv 27
+	Bird Keeper ($625)- Spearow Lv 25, Pidgey Lv 25, Pidgey Lv 25, Spearow Lv 25, Spearow Lv 25
+	Bird Keeper ($650)- Pidgey Lv 26, Pidgeotto Lv 26, Spearow Lv 26, Fearow Lv 26
+	Biker ($560)- Koffing Lv 28, Koffing Lv 28, Koffing Lv 28
+
+Route 14
+-------
+POKEMON
+	(15%) Pidgey Level 26
+	(5%) Pidgeotto Level 28, 30
+	(40%) Oddish Level 22, 24, 26
+	(5%) Gloom Level 30
+	(20%) Venonat Level 24, 26
+	(40%) Bellsprout Level 22, 24, 26
+	(5%) Weepinbell Level 30
+	(15%) Ditto Level 23
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+ITEMS
+	N/A
+TRAINERS
+	Bird Keeper ($650)- Pidgey Lv 26, Spearow Lv 26, Pidgey Lv 26, Fearow Lv 26
+	Bird Keeper ($700)- Pidgey Lv 28, Doduo Lv 28, Pidgeotto Lv 28
+	Bird Keeper ($725)- Pidgeotto Lv 29, Fearow Lv 29
+	Bird Kepper ($700)- Spearow Lv 28, Doduo Lv 28, Fearow Lv 28
+	Biker ($580)- Koffing Lv 29, Muk Lv 29
+	Bird Kepper ($825)- Farfetche'd Lv 33
+	Biker ($580) Koffing Lv 29, Grimer Lv 29
+	Biker ($560)- Grimer Lv 28, Grimer Lv 28, Koffing Lv 28
+	Biker ($560)- Koffing Lv 26, Koffing Lv 26, Grimer Lv 26, Koffing Lv 26
+	Bird Keeper ($725)- Spearow Lv 29, Fearow Lv 29
+
+Route 15
+-------
+POKEMON
+	(15%) Pidgey Level 23
+	(5%) Pidgeotto Level 28, 30
+	(40%) Oddish Level 22, 24, 26
+	(5%) Gloom Level 30
+	(20%) Venonat Level 26, 28
+	(40%) Bellsprout Level 22, 24, 26
+	(5%) Weepinbell Level 30
+	(15%) Ditto Level 26
+ITEMS
+	TM20 (Rage)- Western portion of the northern half
+	TM18 (Rain Dance)- Western portioin of the northern half
+	Evp Share- from an aide after catfching 50 different pokemon
+TRAINERS
+
+Route 16
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 17
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 18
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 19
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 20
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 21
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 22
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 23
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 24
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 25
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 26
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 27
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+
+Route 28
+-------
+POKEMON
+
+ITEMS
+
+TRAINERS
+

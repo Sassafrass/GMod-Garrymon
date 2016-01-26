@@ -4,10 +4,17 @@ include("cl_battleinfo.lua")
 surface.CreateFont( "GarrymonFont",
 {
 	font		= "Tahoma",
-	size		= 32,
+	size		= ScreenScale(16),
 	weight		= 500,
 	outline 	= true,
 	antialias 	= true,
+})
+
+surface.CreateFont( "GarrymonLarge",
+{
+	font		= "Roboto",
+	size		= ScreenScale(14),
+	weight		= 500
 })
 
 local playing = true
@@ -37,7 +44,7 @@ local textEntry = vgui.Create( "DTextEntry", chatPanel )
 textEntry:SetHeight( 40 )
 textEntry:SetFocusTopLevel( true )
 textEntry:Dock( BOTTOM )
-textEntry:SetFont( "DermaLarge" )
+textEntry:SetFont( "GarrymonLarge" )
 function textEntry:OnEnter()
 	RunConsoleCommand( "say", self:GetText() )
 	self:SetText( "" )
@@ -87,7 +94,11 @@ end
 battlePanel:Init()
 
 frame:MakePopup()
-textEntry:RequestFocus()
+
+net.Receive( "PlayerInitialSpawn", function( len )
+	textEntry:SetText( net.ReadString() )
+	textEntry:RequestFocus()
+end )
 
 local function parseText( text, colorStack )
 	local k, l = string.find( text, "</c>" )

@@ -16,10 +16,14 @@ include("garrymon.lua")
 
 local pl
 
+util.AddNetworkString( "PlayerInitialSpawn" )
 function GM:PlayerInitialSpawn(ply)
 	pl = ply
 	pl.inventory = {}
 	pl.garrymons = {}
+    net.Start( "PlayerInitialSpawn" )
+        net.WriteString( ply:GetName() )
+    net.Send( ply )
  
  	if not self.thread then
 		self.thread = coroutine.create( self.Loop )
@@ -48,7 +52,7 @@ local GAMESTATE_WAITFORHEAL = 4
 local function readInput()
     while true do
         local text = coroutine.yield()
-        if text then
+        if text and text ~= "" then
             pl:ChatPrint( " > " .. text )
             return text
         end
@@ -379,20 +383,20 @@ function GM:SetState( state )
         self:GiveItem( "PotionHealing" )
         self:GiveItem( "PotionHealing" )
         self:GiveItem( "BallGarry" )
-        wait( 1 )
-        self:ActionMessage("An unknown person barges into the room")
-        wait( 1 )
-        self:AddChatDelayed("???", "Yo pops, let me get my garrymon!")
-        wait( 1 )
-        self:ActionMessage("The mysterious person grabs one of the garryballs")
-        wait( 2 )
-        self:ActionMessage("He turns to you with his garryball in hand")
-        wait( 2 )
-        self:AddChatDelayed("Javier", "I'm Javier. Who the fuck are you? Wanna fight?")
-        local choice = self:DoChoice( "Yes", "No" )
-        if choice == 2 then
-            self:AddChatDelayed("Javier", "You're funny. We're doing this.")
-        end
+        -- wait( 1 )
+        -- self:ActionMessage("An unknown person barges into the room")
+        -- wait( 1 )
+        -- self:AddChatDelayed("???", "Yo pops, let me get my garrymon!")
+        -- wait( 1 )
+        -- self:ActionMessage("The mysterious person grabs one of the garryballs")
+        -- wait( 2 )
+        -- self:ActionMessage("He turns to you with his garryball in hand")
+        -- wait( 2 )
+        -- self:AddChatDelayed("Javier", "I'm Javier. Who the fuck are you? Wanna fight?")
+        -- local choice = self:DoChoice( "Yes", "No" )
+        -- if choice == 2 then
+        --     self:AddChatDelayed("Javier", "You're funny. We're doing this.")
+        -- end
         self:BeginFight()
     end
  
