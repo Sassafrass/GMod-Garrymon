@@ -20,3 +20,6 @@ end
 
 VECTOR_UP = Vector(0, 0, 1)
 VECTOR_ZERO = Vector(0, 0, 0)
+
+color_white = Color( 255, 255, 255, 255 )
+color_black = Color( 0, 0, 0, 255 )

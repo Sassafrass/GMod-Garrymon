@@ -27,7 +27,7 @@ Route 3
 -------
 POKEMON
 	(50%) Pidgey Level 6-8
-	(40%) Spearow LEvel 5-8
+	(40%) Spearow Level 5-8
 	(10%) Jigglypuff Level 3, 5, 7
 ITEMS
 	Hyper Potion
