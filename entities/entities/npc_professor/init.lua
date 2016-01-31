@@ -10,7 +10,6 @@ function ENT:Initialize()
 end
 
 function ENT:Use( activator, caller, type, value )
-	print( self, " Used by ", activator )
 	if activator:IsPlayer() then
 		gamemode.Call( "OnPlayerTalkToNPC", activator, self )
 	end

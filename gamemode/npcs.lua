@@ -10,5 +10,4 @@ function GM:SpawnNPCs()
 end
 
 function GM:OnPlayerTalkToNPC( pl, npc )
-	print( pl, " talked to ", npc )
 end

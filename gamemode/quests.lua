@@ -45,6 +45,7 @@ function QuestLog:Complete( q )
 	table.RemoveByValue( self.quests, q )
 	self.completed[q.name] = true
 	q:OnComplete()
+	q:Unload()
 	gamemode.Call( "OnPlayerCompletedQuest", self:GetPlayer(), q.name )
 end
 

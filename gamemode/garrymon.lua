@@ -144,6 +144,10 @@ local function Garrymon( name, gtype, hp, attack, defense, spattack, spdefense, 
     }
 end
 
+local function EvolvedGarrymon( name, base, hp, attack, defense, spattack, spdefense, speed )
+	return Garrymon( name, b.gtype, hp, attack, defense, spattack, spdefense, speed, b.abilities, b.evolves )
+end
+
 GM.garrymons = {
     Muberry = Garrymon( "Muberry", GTYPE_GRASS, 45, 49, 49, 65, 65, 45, 
     	  { Ability("Growl"), Ability("Tackle"), Ability("LeechSeed", 7), Ability("VineWhip", 9), 
@@ -161,6 +165,9 @@ GM.garrymons = {
     	 	Ability("ScaryFace", 19), Ability("FireFang", 25), Ability("FlameBurst", 28), Ability("Slash", 34), Ability("Flamethrower", 37),
     	 	Ability("FireSpin", 43), Ability("Inferno", 46) },
     	 	{16, "Flametheon", 36, "Blazer"} ),
-    Thornball = Garrymon( "Thornball", GTYPE_GRASS, 60, 62, 63, 80, 80, 60,  GM.garrymons.Muberry.abilities, {32, "Whiplash"} ),
-    Whiplash = Garrymon( "Whiplash", GTYPE_GRASS, 80, 82, 83, 100, 100, 80, GM.garrymons.Muberry.abilities),
 }
+
+-- Evolved garrymon
+
+GM.garrymons.Thornball = Garrymon( "Thornball", "Muberry", 60, 62, 63, 80, 80, 60 )
+GM.garrymons.Whiplash = Garrymon( "Whiplash", "Thornball", 80, 82, 83, 100, 100, 80 )
