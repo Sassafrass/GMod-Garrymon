@@ -5,7 +5,15 @@ include("shared.lua")
 function ENT:Initialize()
 
 	self:SetModel("models/Kleiner.mdl")
+	self:SetUseType( SIMPLE_USE )
 
+end
+
+function ENT:Use( activator, caller, type, value )
+	print( self, " Used by ", activator )
+	if activator:IsPlayer() then
+		gamemode.Call( "OnPlayerTalkToNPC", activator, self )
+	end
 end
 
 function ENT:GetYawPitch(vec)

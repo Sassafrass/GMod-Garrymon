@@ -1,5 +1,6 @@
 include("shared.lua")
 include("cl_battleinfo.lua")
+include("cl_quests.lua")
 
 surface.CreateFont( "GarrymonFont",
 {
