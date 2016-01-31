@@ -160,5 +160,7 @@ GM.garrymons = {
     	  { Ability("Scratch"), Ability("Growl"), Ability("Ember", 7), Ability("Smokescreen", 10), Ability("DragonRage", 16),
     	 	Ability("ScaryFace", 19), Ability("FireFang", 25), Ability("FlameBurst", 28), Ability("Slash", 34), Ability("Flamethrower", 37),
     	 	Ability("FireSpin", 43), Ability("Inferno", 46) },
-    	 	{16, "Flametheon", 36, "Blazer"} )
+    	 	{16, "Flametheon", 36, "Blazer"} ),
+    Thornball = Garrymon( "Thornball", GTYPE_GRASS, 60, 62, 63, 80, 80, 60,  GM.garrymons.Muberry.abilities, {32, "Whiplash"} ),
+    Whiplash = Garrymon( "Whiplash", GTYPE_GRASS, 80, 82, 83, 100, 100, 80, GM.garrymons.Muberry.abilities),
 }

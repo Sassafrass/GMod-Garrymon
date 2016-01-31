@@ -21,13 +21,25 @@ ITEMS
 	Full Restore
 	Moon Stone
 TRAINERS
-	N/A
+	If Grass then
+		Javier ($280):
+			Pidgey Lv 9 Gust, Sand Attack
+			Charmander Lv 8 Scratch, Growl
+	If Fire then
+		Javier ($280):
+			Pidgey Lv 9 Gust, Sand Attack
+			Squirtle Lv 8 Tackle, Tail Whip, Bubble
+	If Grass then
+		Javier ($280):
+			Pidgey Lv 9 Gust, Sand Attack
+			Bulbasaur Lv 8 Tackle, Growl, Leech Seed
+			
 
 Route 3
 -------
 POKEMON
 	(50%) Pidgey Level 6-8
-	(40%) Spearow Level 5-8
+	(40%) Spearow LEvel 5-8
 	(10%) Jigglypuff Level 3, 5, 7
 ITEMS
 	Hyper Potion
@@ -329,108 +341,333 @@ ITEMS
 	TM18 (Rain Dance)- Western portioin of the northern half
 	Evp Share- from an aide after catfching 50 different pokemon
 TRAINERS
+	Jr. Trainer ($660)- Clefairy Lv 33 (REQUIRES CUT)
+	Beauty ($2030)- Pidgeotto Lv 29, Wigglytuff Lv 29
+	Jr, Trainer ($580)- Pikechu Lv 29, Raichu Lv 29
+	Biker ($500)- Koffing Lv 25, Koffing Lv 25, Weezing Lv 25, Koffing Lv 25, Grimer Lv 25
+	Biker ($560)- Koffing Lv 28, Grimer Lv 28, Weezing Lv 28
+	Beauty ($2030)- Bulbasaur Lv 29, Ivysaur Lv 29
+	Jr, Trainer ($560)- Gloom Lv 28, Oddish Lv 28, Oddish Lv 28
+	Bird Keeper ($700)- Dodrio Lv 28, Doduo Lv 28, Doduo Lv 28
+	Bird Keeper ($650)- Pidgeotto Lv 26, Farfetch'd Lv 26, Doduo Lv 26, Pidgey Lv 26
+	Jr. Trainer ($580)- Bellsprout Lv 29, Oddish Lv 29, Tangela Lv 29
 
 Route 16
 -------
 POKEMON
-
+	(30%) Rattata Level 18, 20, 22
+	(5%) Raticate Level 23, 25
+	(40%) Spearow Level 20, 22
+	(25%) Doduo Level 18, 20, 22
+	(100%) Snorlax Level 30
 ITEMS
-
+	HM02(Fly)- From the recluse on the northern half of the route (Requires Cut)
+	Leftovers- Where snorlax was sleeping
 TRAINERS
+	Biker ($580)- Grimer Lv 29, Koffing Lv 29
+	Cue Ball ($700)- Machop Lc 28, Mankey Lv 28, Machop Lv 28
+	Cue Ball ($725)- Mankey Lv 29, Machop Lv 29
+	Biker ($725)- Weezing Lv 33
+	Cue Ball ($825)- Machop Lv 33
+	Biker ($520)- Grimer Lv 26, Grimer Lv 26, Grimer Lv 26, Grimer Lv 26
 
 Route 17
 -------
 POKEMON
-
+	(30%) Raticate Level 25, 27, 29
+	(40%) Spearow Level 20, 22
+	(5%) Fearow Level 25, 27
+	(25%) Doduo Level 24, 26, 28
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Tentacool Level 5
+	(25%) Krabby Level 15
 ITEMS
-
+	Rare Candy
+	Max Revive
+	Rare Candy
+	Max Revive
+	Full Restore
 TRAINERS
+	Cue Ball ($725)- Machop Lv 29, Machoke Lv 29
+	Cue Ball ($725)- Mankey Lv 29, Primeape Lv 29
+	Biker ($560)- Weezing Lv 28, Koffing Lv 28, Weezing Lv 28
+	Biker ($660)- Muk Lv 33
+	Biker ($580)- Voltorb Lv 29, Voltorb Lv 29
+	Cue Ball ($825)- Primeape Lv 29, Machoke Lv 29
+	Cue Ball ($650)- Mankey Lv 26, Mankey Lv 26, Machoke Lv 26, Machop Lv 26
+	Biker ($580)- Weezing Lv 29, Muk Lv 29
+	Biker ($500)- Koffing Lv 25, Weezing Lv 25, Koffing Lv 25, Koffing Lv 25, Weezing Lv 25
 
 Route 18
 -------
 POKEMON
-
+	(20%) Raticate Level 25, 29
+	(40%) Spearow Level 20, 22
+	(15%) Fearow Level 25, 27, 29
+	(25%) Doduo Level 24, 26, 28
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Tentacool Level 5
+	(25%) Krabby Level 15
+	(25%) Goldeen Level 15
 ITEMS
-
+	N/A
 TRAINERS
+	Bird Keeper ($725)- Spearow Lv 29, Fearow Lv 29
+	Bird Keeper ($650)- Spearow Lv 26, Spearow Lv 26, Fearow Lv 26, Spearow Lv 26
+	Bird Keeper ($850)- Dodrio Lv 34
 
 Route 19
 -------
 POKEMON
-
+--Surfing
+	(100%) Tentacool Level 5, 10, 15, 20, 30, 35, 40
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Shellder Level 15
+	(25%) Horsea Level 15
+	(25%) Staryu Level 15 
 ITEMS
-
+	TM55 (Brine) Lower right hand corner of the route (REQUIRES SURF)
+	Revive 
 TRAINERS
+--Beach
+	Swimmer ($145)- Goldeen Lv 29, Horsea Lv 29, Staryu Lv 29
+	Swimmer ($150)- Tentacool Lv 30, Shellder Lv 30
+--Water
+	Swimmer ($150)- Horsea Lv 30, Horsea Lv 30
+	Swimmer ($150)- Poliwag Lv 30, Poliwhirl Lv 30
+	Swimmer ($135)- Horsea Lv 27, Tentacool Lv 27, Tentacool Lv 27, Goldeen Lv 27
+	Swimmer ($145)- Goldeen Lv 29, Shellder Lv 29, Seaking Lv 29
+	Swimmer ($135)- Tentacool Lv 27, Tentacool Lv 27, Staryu Lv 27, Horsea Lv 27, Tentacruel Lv 27
+	Beauty ($2100)- Goldeen Lv 30, Seaking Lv 30
+	Beauty ($1820)- Poliwag	Lv 27, Goldeen Lv 27, Seaking Lv 27, Goldeen Lv 27, Poliwag Lv 27
+	Beauty ($2030)- Staryu Lv 29, Staryu Lv 29, Staryu Lv 29
 
 Route 20
 -------
 POKEMON
-
+--Surfing
+	(100%) Tentacool Level 5, 10, 15, 20, 30, 35, 40
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Shellder Level 15
+	(25%) Horsea Level 15
+	(25%) Staryu Level 15
 ITEMS
-
+	N/A
 TRAINERS
+--East of the islands
+	Swimmer ($155)- Shellder Lv 31, Cloyster Lv 31
+	Swimmer ($140)- Horsea Lv 28, Horsea Lv 28, Seadra Lv 28, Horsea Lv 28
+	Beauty ($2100)- Seadra Lv 30, Horsea Lv 30, Seadra Lv 30
+	Beauty ($2450)- Seaking
+--West of the islands
+	Jr. Trainer ($600)- Tentacool Lv 30, Horsea Lv 30, Seel Lv 30
+	Swimmer ($175)- Staryu Lv 35
+	Bird Keeper ($750)- Fearow Lv 30, Fearow Lv 30, Pidgeotto Lv 30
+	Beauty ($2100)- Shellder Lv 30, Shellder Lv 30, Cloyster Lv 30
+	Jr. Trainer ($620)- Goldeen Lv 31, Seaking Lv 31
+	Beauty ($2170)- Poliwag Lv 31, Seaking Lv 31
 
 Route 21
 -------
 POKEMON
-
+	(25%) Pidgey Level 21, 23
+	(15%) Pidgeotto Level 30, 32
+	(35%) Rattata Level 21, 23
+	(15%) Raticate Level 30
+	(10%) Tangela Level 28, 30, 32
+--Surfing
+	(100%) Tentacool Level 5, 10, 15, 20, 30, 35, 40
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Shellder Level 15
+	(25%) Horsea Level 15
+	(25%) Staryu Level 15
 ITEMS
-
+	N/A
 TRAINERS
+	Fisherman ($945)- Magikarp Lv 27, Magikarp Lv 27, Magikarp Lv 27, Magikarp Lv 27, Magikarp Lv 27, Magikarp Lv 27
+	Fisherman ($980)- Seaking Lv 28, Goldeen Lv 28, Seaking Lv 28, Seaking Lv 28
+	Swimmer ($165)- Seadra Lv 33, Tentacruel Lv 33
+	Cue Ball ($775)- Tentacool Lv 31, Tentacool Lv 31, Tentacruel Lv 31
+	Fisherman ($1085)- Shellder Lv 31, Cloyster Lv 31
+	Fisherman ($1155)- Seaking Lv 33, Goldeen Lv 33
+	Swimmer ($185)- Starmite Lv 37
+	Swimmer ($165)- Staryu Lv 33, Wartortle Lv 33
+	Swimmer ($160)- Poliwhirl Lv 32, Tentacool Lv 32, Seadra Lv 32
 
 Route 22
 -------
 POKEMON
-
+	(50%) Rattata Levels 2-4
+	(10%) Spearow Level 3, 5
+	(5%) Nidoran Level 3-4
+	(35%) Nidoran Level 2-4
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
 ITEMS
-
+	N/A
 TRAINERS
+	If Grass then
+		Javier ($3445): 
+			Pidgeot Lv 47 Wing Attack, Agility, Quick Attack, Whirlwind
+			Rhyhorn Lv 45 Fury Attack, Stomp, Horn Attack, Tail Whip
+			Exeggcute Lv 45 Leech Seed, Poison Powder, Solar Beam, Growth
+			Gyarados Lv 47 Dragon Rage, Hydro Pump, Bite, Leer
+			Alakazam Lv 50 Psychic, Psybeam, Reflect, Recover
+			Charizard Lv 53 Flamethrower, Slash, Rage, Leer
+	If Fire then
+		Javier ($3445): 
+			Pidgeot Lv 47 Wing Attack, Agility, Quick Attack, Whirlwind
+			Rhyhorn Lv 45 Fury Attack, Stomp, Horn Attack, Tail Whip
+			Exeggcute Lv 45 Leech Seed, Poison Powder, Solar Beam, Growth
+			Gyarados Lv 47 Dragon Rage, Hydro Pump, Bite, Leer
+			Alakazam Lv 50 Psychic, Psybeam, Reflect, Recover
+			Blastoise Lv 53 Hydro Pump, Bite, Skull Bash, Withdraw
+	If Water then
+		Javier ($3445): 
+			Pidgeot Lv 47 Wing Attack, Agility, Quick Attack, Whirlwind
+			Rhyhorn Lv 45 Fury Attack, Stomp, Horn Attack, Tail Whip
+			Exeggcute Lv 45 Leech Seed, Poison Powder, Solar Beam, Growth
+			Gyarados Lv 47 Dragon Rage, Hydro Pump, Bite, Leer
+			Alakazam Lv 50 Psychic, Psybeam, Reflect, Recover
+			Venusaur Lv 53 Vine Whip, Poison Powder, Razor Leaf, Growth
 
-Route 23
+Route 23 (NEEDS SURF)
 -------
 POKEMON
-
+	(15%) Spearow Level 26
+	(25%) Fearow Level 38, 41, 43
+	(25%) Ekans Level 26
+	(5%) Arbok Level 41
+	(25%) Sandshrew Level 26
+	(5%) Sandslash Level 41
+	(30%) Ditto Level 33, 38, 43
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(25%) Slowbrow Level 23
+	(25%) Kingler Level 23
+	(25%) Seadra Level 23
+	(25%) Seaking Level 23
 ITEMS
-
+	Ultra Ball
 TRAINERS
+	N/A
 
 Route 24
 -------
 POKEMON
-
+	(25%) Caterpie Level 7
+	(15%) Metapod Level 8
+	(25%) Weedle Level 7
+	(15%) Kakuna Level 8
+	(20%) Pidgey Level 12-13
+	(25%) Oddish Level 12-14
+	(15%) Abra Level 8, 10, 12
+	(25%) Bellsprout Level 12-14
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(33%) Psyduck Level 15
+	(33%) Krabby Level 15
 ITEMS
-
+	TM45 (Thunder Wave) On the plateau at the northern end
+	TM45 (Attract) On the plateau on the northern end
 TRAINERS
+	Bug Catcher ($140)- Caterpie Level 14, Weedle Lv 14
+	Lass ($210)- Pidgey Lv 14, Nidoran Lv 14
+	Youngster ($210)- Rattata Lv 14, Ekans Lv 14, Zubat Lv 14
+	Lass ($240)- Pidgey Lv 16, Zubat Lv 16
+	Jr. Trainer ($360)- Mankey Lv 18
+	Rocket ($450)- Ekans Lv 15, Zubat Lv 15
+	Jr, Trainer ($280)- Rattata Lv 14, Ekans Lv 14
 
 Route 25
 -------
 POKEMON
-
+	(1%) Caterpie Level 8
+	(4%) Metapod Level 9
+	(25%) Weedle Level 8
+	(15%) Kakuna Level 9
+	(15%) Pidgey Level 13
+	(25%) Oddish Level 12-14
+	(15%) Abra Level 10, 12
+	(25%) Bellsprout Level 12, 14
+--Fishing
+	(100%) Magikarp Level 5
+	(50%) Poliwag Level 10
+	(50%) Goldeen Level 10
+	(33%) Psyduck Level 15
+	(33%) Krabby Level 15
 ITEMS
-
+	TM19 (Seismic Toss)- Northeast of the tree maze
+	TM43 (Secret Powder)- Behind cuttable tree (REQUIRES CUT)
+	Potion
+	Revive
 TRAINERS
+	Hiker ($525)- Machop Lv 15, Geodude Lv 15
+	Hiker ($595)- Onix Lv 17
+	Youngster ($225)- Rattata Lv 15, Spearow Lv 15
+	Youngster ($255)- Slowpoke Lv 17
+	Lass ($225)- Nidoran Lv 15, Nodoran Lv 15
+	Hiker ($465)- Geodude Lv 13, Geodude Lv 13, Machop Lv 13, Geodude Lv 13
+	Jr. Trainer ($280)- Rattata Lv 14, Ekans Lv 14
+	Youngster ($210)- Ekans Lv 14, Sandshrew Lv 15
+	Lass ($195)- Oddish Lv 13, Pidgey Lv 13, Oddish Lv 13
 
-Route 26
--------
-POKEMON
+---------------------------
 
-ITEMS
+ELITE FIVE
+Lorelei ($5544) SPECS IN ICE
+	Dewgong Lv 54 Growl, Aurora Beam, Rest, Take Down
+	Cloyster Lv 53 Supersonic, Clamp, Aurora Beam, Spike Cannon
+	Slowbro Lv 54 Growl, Water Gun, Withdraw, Amnesia
+	Jynx Lv 56 Double Slap, Ice Punch, Body Slam, Thrash
+	Lapras Lv 56 Body Slam, Confuse Ray, Blizzard, Hydro Pump
 
-TRAINERS
+Bruno ($5742) SPECS IN FIGHTING
+	Onix Lv 53 Rock Throw, Rage, Slam, Harden
+	Hitmonchan Lv 55 Ice Punch, Thunder Punch, Mega Punch, Counter
+	Hitmonlee Lv 55 Jump Kick, Focus Energy, Hi Jimp Kick, Mega Kick
+	Onix Lv 56 Rock Throw, Rage, Slam, Harden
+	Machamp Lv 58 Leer, Focus Energy, Fissure, Submission
 
-Route 27
--------
-POKEMON
+Agatha ($5940) SPECS IN GHOST
+	Gengar Lv 56 Confuse Ray, Night Shade, Hypnosis, Dream Eater
+	Golbat Lv 56 Supersonic, confuse Ray, Wing Attack, Haze
+	Haunter Lv 55 Confuse Ray, Night Shade, Hypnosis, Dream Eater
+	Arbok Lv 58 Bite, Glare, Screech, Acid
+	Gengar Lv 60 Confuse Ray, Night Shade, Toxic, Dream Eater
 
-ITEMS
+Lance ($6138) SPECS IN DRAGON
+	Gyarados Lv 58 Hydro Pump, Dragon Rage, Leer, Hyper Beam
+	Dragonair Lv 56 Agility, Slam, Dragon Rage, Hyper Beam
+	Dragonair Lv 56 Agility, Slam, Dragon Rage, Hyper Beam
+	Aerodactyl Lv 60 Supersonic, Bite, Take Down, Hyper Beam
+	Dragonite Lv 62 Agility, Slam, Barrier, Hyper Beam
 
-TRAINERS
-
-Route 28
--------
-POKEMON
-
-ITEMS
-
-TRAINERS
-
+Helen ($7435) NO SPECIALITY
+	Arcanine Lv 63 Fire Blast, Flare Blitz, Hyper Beam, Flamethrower
+	Dragonite Lv 65 Hyper Beam, Giga Impact, DRaco Meteor, Hurricane
+	Lapras Lv 65 Blizzard, Giga Impact, Hyper Beam, Hydro Pump
+	Rapidash Lv 63 Fire Blast, Flare Blitz, Megahorn, Overheat
+	Venusaur Lv 67 Solar Beam, Double- Edge, Slkudge Bomb, Petal Dance
+	Jolteon Lv 60 Thunder, Thunderbolt, Last Resort, Hyper Beam
