@@ -5,11 +5,14 @@ Desc: Pokemon in garrysmod
 
 AddCSLuaFile("shared.lua")
 AddCSLuaFile("cl_init.lua")
+AddCSLuaFile("cl_quests.lua")
 AddCSLuaFile("cl_battleinfo.lua")
 include("shared.lua")
 include("items.lua")
 include("abilities.lua")
 include("garrymon.lua")
+include("npcs.lua")
+include("quests.lua")
 
 -- Add resources here
 --resource.AddFile("materials/ttd/rail.vmt")
@@ -21,6 +24,8 @@ function GM:PlayerInitialSpawn(ply)
 	pl = ply
 	pl.inventory = {}
 	pl.garrymons = {}
+    quest.createQuestLog( ply )
+    quest.giveToPlayer( ply, "quest1.1" )
     net.Start( "PlayerInitialSpawn" )
         net.WriteString( ply:GetName() )
     net.Send( ply )
@@ -42,15 +47,7 @@ end
 
 function GM:InitPostEntity()
 
-    timer.Simple( 1, function()
-        local professor = ents.Create( "npc_professor" )
-        professor:SetPos( Vector(768.174133, 1137.295044, 0.031250) )
-        professor:SetAngles( Angle(0, -90, 0) )
-        professor:SetKeyValue( "spawnflags", bit.bor( SF_NPC_FADE_CORPSE, SF_NPC_ALWAYSTHINK ) )
-        professor:Spawn()
-        professor:Activate()
-        professor:DropToFloor()
-    end )
+    timer.Simple( 1, function() self:SpawnNPCs() end )
 
 end
 
