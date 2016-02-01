@@ -2,6 +2,8 @@ local QUEST = {}
 QUEST.__index = QUEST
 QUEST.description = "A quest."
 
+AccessorFunc( QUEST, "player", "Player" )
+
 function QUEST:IsValid()
 	return true
 end

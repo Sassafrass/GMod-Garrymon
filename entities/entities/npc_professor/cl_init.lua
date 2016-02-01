@@ -16,6 +16,7 @@ local nameTagShadowColor = Color( 0, 0, 0, 0 )
 
 function ENT:Draw()
 	self:DrawModel()
+	if( halo.RenderedEntity() == self ) then return end
 	local headPos = self:GetBonePosition(self:LookupBone("ValveBiped.Bip01_Head1"))
 	local alpha = 1 - math.Clamp( EyePos():Distance( headPos ) - 200, 0, 200 ) / 200
 	if alpha > 0 then
@@ -30,3 +31,18 @@ function ENT:Draw()
 		cam.End3D2D()
 	end
 end
+
+function ENT:StartTalking()
+	--self:
+end
+
+hook.Add( "PreDrawHalos", "npc_halo", function()
+	local tr = LocalPlayer():GetEyeTrace()
+	local hitEnt = tr.Entity
+	-- NOTE(Sassafrass): 82 is use distance according to https://developer.valvesoftware.com/wiki/Dimensions
+	-- but it appears to be further in Gmod
+	if( IsValid( hitEnt ) and hitEnt:GetClass() == "npc_professor" and
+		EyePos():Distance( tr.HitPos ) <= 95 ) then
+		halo.Add( {hitEnt}, Color( 255, 255, 255 ), 2, 2, 2 )
+	end
+end )

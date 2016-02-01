@@ -31,7 +31,7 @@ function QuestLog:AddQuest( name )
 	setmetatable( q, quest.quests[name] )
 	q.__index = quest.quests[name]
 	table.insert( self.quests, q )
-	q.owner = self:GetPlayer()
+	q:SetPlayer( self:GetPlayer() )
 	q.Complete = self.completeInternal
 	q:Init()
 	net.Start( "QuestLog:AddQuest" )

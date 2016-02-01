@@ -13,22 +13,24 @@ include("abilities.lua")
 include("garrymon.lua")
 include("npcs.lua")
 include("quests.lua")
+include("transmission.lua")
 
 -- Add resources here
 --resource.AddFile("materials/ttd/rail.vmt")
 
-local pl
-
 util.AddNetworkString( "PlayerInitialSpawn" )
-function GM:PlayerInitialSpawn(ply)
-	pl = ply
+function GM:PlayerInitialSpawn(pl)
 	pl.inventory = {}
 	pl.garrymons = {}
-    quest.createQuestLog( ply )
-    quest.giveToPlayer( ply, "quest1.1" )
+    quest.createQuestLog( pl )
+
+    timer.Simple( 1, function()
+        quest.giveToPlayer( pl, "quest1.1" )
+    end )
+    
     net.Start( "PlayerInitialSpawn" )
-        net.WriteString( ply:GetName() )
-    net.Send( ply )
+        net.WriteString( pl:GetName() )
+    net.Send( pl )
  
  	if not self.thread then
 		self.thread = coroutine.create( self.Loop )
@@ -37,12 +39,18 @@ function GM:PlayerInitialSpawn(ply)
 	        pl:ChatPrint( res )
 	    end
 	end
+
+    self:TransmitPlayerInit(pl)
 end
 
 function GM:PlayerSpawn(pl)
 
 	pl:SetModel( "models/player/kleiner.mdl" )
 
+end
+
+function GM:PlayerDisconnected( pl )
+    self:TransmitPlayerDisconnected( pl )
 end
 
 function GM:InitPostEntity()
@@ -55,16 +63,11 @@ local name
 local javier = {}
 javier.garrymons = {}
  
-local GAMESTATE_NAME = 1
-local GAMESTATE_CHOOSE = 2
-local GAMESTATE_PLAYING = 3
-local GAMESTATE_WAITFORHEAL = 4
- 
 local function readInput()
     while true do
         local text = coroutine.yield()
         if text and text ~= "" then
-            pl:ChatPrint( " > " .. text )
+            --pl:ChatPrint( " > " .. text )
             return text
         end
     end
@@ -437,28 +440,28 @@ function GM:DisplayInventory()
     end
 end
  
-function GM:PlayerSay( pl, text, isTeam )
-	if waitEndTime then
-		waitEndTime = nil
-		local ok, res = coroutine.resume( self.thread )
-        if not ok then
-            pl:ChatPrint( res )
-        end
-	end
+-- function GM:PlayerSay( pl, text, isTeam )
+-- 	if waitEndTime then
+-- 		waitEndTime = nil
+-- 		local ok, res = coroutine.resume( self.thread )
+--         if not ok then
+--             pl:ChatPrint( res )
+--         end
+-- 	end
 	
-    local ok, res = coroutine.resume( self.thread, text )
-    if not ok then
-        pl:ChatPrint( res )
-    end
-    return false
-end
+--     local ok, res = coroutine.resume( self.thread, text )
+--     if not ok then
+--         pl:ChatPrint( res )
+--     end
+--     return false
+-- end
 
-function GM:Think()
-	if waitEndTime and CurTime() >= waitEndTime then
-		waitEndTime = nil
-		local ok, res = coroutine.resume( self.thread )
-        if not ok then
-            pl:ChatPrint( res )
-        end
-	end
-end
+-- function GM:Think()
+-- 	if waitEndTime and CurTime() >= waitEndTime then
+-- 		waitEndTime = nil
+-- 		local ok, res = coroutine.resume( self.thread )
+--         if not ok then
+--             pl:ChatPrint( res )
+--         end
+-- 	end
+-- end
