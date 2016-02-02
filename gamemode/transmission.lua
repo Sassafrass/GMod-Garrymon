@@ -26,6 +26,7 @@ META = nil
 function GM:MakeEntityCustomTransmit( ent )
 	transmitEntities[ ent ] = true
 	ent.transmitToPlayers = {}
+	ent:SetCustomCollisionCheck( true )
 	for _, pl in pairs( player.GetAll() ) do
 		ent:SetPreventTransmit( pl, true )
 	end

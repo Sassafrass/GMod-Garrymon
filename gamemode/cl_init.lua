@@ -16,6 +16,7 @@ surface.CreateFont( "GarrymonLarge",
 	weight		= 500
 })
 
+include("cl_chat.lua")
 include("cl_battleinfo.lua")
 include("cl_quests.lua")
 

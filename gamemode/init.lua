@@ -5,6 +5,7 @@ Desc: Pokemon in garrysmod
 
 AddCSLuaFile("shared.lua")
 AddCSLuaFile("cl_init.lua")
+AddCSLuaFile("cl_chat.lua")
 AddCSLuaFile("cl_quests.lua")
 AddCSLuaFile("cl_battleinfo.lua")
 include("shared.lua")
@@ -62,7 +63,7 @@ end
 function GM:ShouldCollide( ent1, ent2 )
     if ent1.transmitToPlayers and not table.HasValue( ent1.transmitToPlayers, ent2 ) then
         return false
-    elseif ent2.transmitToPlayers and not table.HasValue( ent2.transmitToPlayers, ent2 ) then
+    elseif ent2.transmitToPlayers and not table.HasValue( ent2.transmitToPlayers, ent1 ) then
         return false
     end
     return true
