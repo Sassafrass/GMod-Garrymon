@@ -145,9 +145,10 @@ local function Garrymon( name, gtype, hp, attack, defense, spattack, spdefense, 
 end
 
 local function EvolvedGarrymon( name, base, hp, attack, defense, spattack, spdefense, speed )
-	local baseGarrymon = GM.garrymons[ base ]
-	return Garrymon( name, baseGarrymon.gtype, hp, attack, defense, spattack, spdefense, speed, baseGarrymon.abilities, baseGarrymon.evolves )
+	local b = GM.garrymons[ base ]
+	return Garrymon( name, b.gtype, hp, attack, defense, spattack, spdefense, speed, b.abilities, b.evolves )
 end
+
 
 GM.garrymons = {
     Muberry = Garrymon( "Muberry", bit.bor(GTYPE_GRASS, GTYPE_POISON), 45, 49, 49, 65, 65, 45, 

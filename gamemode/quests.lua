@@ -31,7 +31,7 @@ function QuestLog:AddQuest( name )
 	setmetatable( q, quest.quests[name] )
 	q.__index = quest.quests[name]
 	table.insert( self.quests, q )
-	q.owner = self:GetPlayer()
+	q:SetPlayer( self:GetPlayer() )
 	q.Complete = self.completeInternal
 	q:Init()
 	net.Start( "QuestLog:AddQuest" )
@@ -45,6 +45,7 @@ function QuestLog:Complete( q )
 	table.RemoveByValue( self.quests, q )
 	self.completed[q.name] = true
 	q:OnComplete()
+	q:Unload()
 	gamemode.Call( "OnPlayerCompletedQuest", self:GetPlayer(), q.name )
 end
 

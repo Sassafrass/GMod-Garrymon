@@ -5,17 +5,18 @@ QUEST.description = "Find and talk to Professor Newman."
 function QUEST:Init()
 	self.super.Init( self )
 	self:RegisterHook( "OnPlayerTalkToNPC" )
+	GAMEMODE:SpawnNPCForPlayer( "professorGarrycenter", self:GetPlayer() )
 end
 
 function QUEST:OnPlayerTalkToNPC(pl, npc)
-	if pl ~= self.owner then return end
+	if pl ~= self:GetPlayer() then return end
 	if npc:GetID() == "Professor Newman" then
 		self:Complete()
 	end
 end
 
 function QUEST:OnComplete()
-	quest.giveToPlayer( self.owner, "quest1.2" )
+	quest.giveToPlayer( self:GetPlayer(), "quest1.2" )
 end
 
 function QUEST:Unload()
@@ -32,10 +33,11 @@ QUEST.description = "Choose a starter Garrymon."
 function QUEST:Init()
 	self.super.Init( self )
 	self:RegisterHook( "OnPlayerCaptureGarrymon" )
+	GAMEMODE:SpawnNPCForPlayer( "professorGarrycenter", self:GetPlayer() )
 end
 
 function QUEST:OnPlayerCaptureGarrymon( pl, garrymon )
-	if pl ~= self.owner then return end
+	if pl ~= self:GetPlayer() then return end
 	self:Complete()
 end
 

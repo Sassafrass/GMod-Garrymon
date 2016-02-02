@@ -6,13 +6,17 @@ function ENT:Initialize()
 
 	self:SetModel("models/Kleiner.mdl")
 	self:SetUseType( SIMPLE_USE )
+	self:AddGesture( ACT_IDLE )
 
 end
 
 function ENT:Use( activator, caller, type, value )
-	print( self, " Used by ", activator )
 	if activator:IsPlayer() then
 		gamemode.Call( "OnPlayerTalkToNPC", activator, self )
+		local layerID = self:AddGestureSequence( self:LookupSequence("Wave") )
+		self:SetLayerWeight( layerID, 0.0 )
+		self:SetLayerBlendIn( layerID, 0.5 )
+		self:SetLayerBlendOut( layerID, 0.5 )
 	end
 end
 
@@ -46,7 +50,7 @@ function ENT:FindNearestPlayer()
 
 	local closest
 	self.closestPlayer = nil
-	for _, ent in pairs( ents.FindInSphere( self:GetPos(), 500 ) ) do
+	for _, ent in pairs( self.transmitToPlayers ) do
 		if IsValid(ent) and ent:IsPlayer() then
 			if not self.closestPlayer or ent:GetPos():Distance(self:GetPos()) < closest then
 				self.closestPlayer = ent
@@ -71,9 +75,15 @@ function ENT:FaceNearestPlayer()
 	end
 end
 
+function ENT:Think()
+	self:NextThink( CurTime() )
+	return true
+end
+
 function ENT:RunBehaviour()
 
 	self:StartActivity( ACT_IDLE )
+	self.loco:SetDesiredSpeed( 300 )
 
 	while ( true ) do
 

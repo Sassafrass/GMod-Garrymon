@@ -1,6 +1,4 @@
 include("shared.lua")
-include("cl_battleinfo.lua")
-include("cl_quests.lua")
 
 surface.CreateFont( "GarrymonFont",
 {
@@ -17,6 +15,9 @@ surface.CreateFont( "GarrymonLarge",
 	size		= ScreenScale(14),
 	weight		= 500
 })
+
+include("cl_battleinfo.lua")
+include("cl_quests.lua")
 
 net.Receive( "PlayerInitialSpawn", function( len )
 	local name = net.ReadString()
