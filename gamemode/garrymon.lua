@@ -335,7 +335,12 @@ GM.garrymons = {
 		    Ability("WaterPulse", 28), Ability("ZenHeadbutt", 32), Ability("SlackOff", 36), Ability("Amnesia", 41), 
 		    Ability("Psychic", 45), Ability("RainDance", 49), Ability("PsychUp", 54), Ability("HealPulse", 58), }
 		    {37, "Slowbro"} ),
-	Magnemite = Garrymon( "Magnemite", bit.bor(GTYPE_ELECTRIC, GTYPE_STEEL))
+	Magnemite = Garrymon( "Magnemite", bit.bor(GTYPE_ELECTRIC, GTYPE_STEEL), 25, 35, 70, 95, 55, 45,
+          { Ability("Tackle"), Ability("Supersonic", 5), Ability("ThunderShock", 7), Ability("SonicBoom", 11), 
+            Ability("", ), Ability("", ), Ability("", ), Ability("", ), 
+            Ability("", ), Ability("", ), Ability("", ), Ability("", ), 
+            Ability("", ), Ability("", ), Ability("", ), Ability("", ), 
+            Ability("", ), })
 
 
 
