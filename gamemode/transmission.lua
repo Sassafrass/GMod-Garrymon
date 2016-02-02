@@ -1,15 +1,18 @@
 local transmitEntities = {}
 
 local function removePlayerFromTransmit( ent, pl )
+	print( ent, " Removing player from transmit ", pl )
 	ent:SetPreventTransmit( pl, true )
 	table.RemoveByValue( ent.transmitToPlayers, pl )
 	if #ent.transmitToPlayers == 0 then
 		transmitEntities[ent] = nil
+		print( ent, " No more players, good bye!" )
 		ent:Remove()
 	end
 end
 
 local function addPlayerToTransmit( ent, pl )
+	print( ent, " Adding player to transmit ", pl )
 	table.insert( ent.transmitToPlayers, pl )
 	ent:SetPreventTransmit( pl, false )
 	ent:AddEFlags( EFL_FORCE_CHECK_TRANSMIT )

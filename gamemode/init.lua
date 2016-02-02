@@ -59,6 +59,15 @@ function GM:InitPostEntity()
 
 end
 
+function GM:ShouldCollide( ent1, ent2 )
+    if ent1.transmitToPlayers and not table.HasValue( ent1.transmitToPlayers, ent2 ) then
+        return false
+    elseif ent2.transmitToPlayers and not table.HasValue( ent2.transmitToPlayers, ent2 ) then
+        return false
+    end
+    return true
+end
+
 local name
 local javier = {}
 javier.garrymons = {}

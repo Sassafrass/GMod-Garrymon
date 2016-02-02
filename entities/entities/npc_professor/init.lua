@@ -6,15 +6,13 @@ function ENT:Initialize()
 
 	self:SetModel("models/Kleiner.mdl")
 	self:SetUseType( SIMPLE_USE )
+	self:AddGesture( ACT_IDLE )
 
 end
 
 function ENT:Use( activator, caller, type, value )
 	if activator:IsPlayer() then
 		gamemode.Call( "OnPlayerTalkToNPC", activator, self )
-		for _, pl in pairs( player.GetAll() ) do
-			self:SetPreventTransmit( pl, true )
-		end
 		local layerID = self:AddGestureSequence( self:LookupSequence("Wave") )
 		self:SetLayerWeight( layerID, 0.0 )
 		self:SetLayerBlendIn( layerID, 0.5 )
