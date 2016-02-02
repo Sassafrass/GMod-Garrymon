@@ -47,7 +47,3 @@ local function parseText( text, colorStack )
 		chatHistory:AppendText( text )
 	end
 end
-
-function GM:OnPlayerChat( pl, text, teamChat, isDead )
-	-- TODO
-end

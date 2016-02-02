@@ -37,5 +37,11 @@ function GM:SpawnNPCs()
 	
 end
 
+util.AddNetworkString( "gmon.ChatMessage" )
 function GM:OnPlayerTalkToNPC( pl, npc )
+	local headPos = npc:GetBonePosition(npc:LookupBone("ValveBiped.Bip01_Head1"))
+	net.Start( "gmon.ChatMessage" )
+		net.WriteString( "Hello. I am the professor." )
+		net.WriteVector( headPos )
+	net.Send( pl )
 end

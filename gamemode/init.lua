@@ -19,11 +19,13 @@ include("transmission.lua")
 -- Add resources here
 --resource.AddFile("materials/ttd/rail.vmt")
 
+
 util.AddNetworkString( "PlayerInitialSpawn" )
 function GM:PlayerInitialSpawn(pl)
 	pl.inventory = {}
 	pl.garrymons = {}
     quest.createQuestLog( pl )
+    self:SetPlayerScale( pl, 0.85 )
 
     timer.Simple( 1, function()
         quest.giveToPlayer( pl, "quest1.1" )
