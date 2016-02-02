@@ -1,13 +1,13 @@
 include("shared.lua")
 
-ENT.RenderGroup 	= RENDERGROUP_TRANSLUCENT
+ENT.RenderGroup 	= RENDERGROUP_BOTH
 
 surface.CreateFont( "GarrymonNametag",
 {
 	font		= "Tahoma",
 	size		= 48,
 	weight		= 500,
-	outline 	= true,
+	outline 	= false,
 	antialias 	= true,
 })
 
@@ -26,8 +26,7 @@ function ENT:Draw()
 		ang:RotateAroundAxis( ang:Right(), 90 )
 		ang:RotateAroundAxis( EyeAngles():Forward(), 90 )
 		cam.Start3D2D( headPos + VECTOR_UP * (math.abs(math.sin(RealTime() * 4)) * 5 + 10), ang, 0.1 )
-			local font = "GarrymonNametag"
-			draw.SimpleTextOutlined( self:GetID(), font, 0, 0, nameTagColor, 1, 1, 2, nameTagShadowColor )
+			draw.SimpleTextOutlined( self:GetID(), "GarrymonNametag", 0, 0, nameTagColor, 1, 1, 2, nameTagShadowColor )
 		cam.End3D2D()
 	end
 end

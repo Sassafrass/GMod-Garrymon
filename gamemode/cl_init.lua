@@ -16,6 +16,7 @@ surface.CreateFont( "GarrymonLarge",
 	weight		= 500
 })
 
+include("cl_chat.lua")
 include("cl_battleinfo.lua")
 include("cl_quests.lua")
 
@@ -45,8 +46,4 @@ local function parseText( text, colorStack )
 		chatHistory:InsertColorChange( c.r, c.g, c.b, 255 )
 		chatHistory:AppendText( text )
 	end
-end
-
-function GM:OnPlayerChat( pl, text, teamChat, isDead )
-	-- TODO
 end

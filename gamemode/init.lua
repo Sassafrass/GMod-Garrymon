@@ -5,6 +5,7 @@ Desc: Pokemon in garrysmod
 
 AddCSLuaFile("shared.lua")
 AddCSLuaFile("cl_init.lua")
+AddCSLuaFile("cl_chat.lua")
 AddCSLuaFile("cl_quests.lua")
 AddCSLuaFile("cl_battleinfo.lua")
 include("shared.lua")
@@ -18,11 +19,13 @@ include("transmission.lua")
 -- Add resources here
 --resource.AddFile("materials/ttd/rail.vmt")
 
+
 util.AddNetworkString( "PlayerInitialSpawn" )
 function GM:PlayerInitialSpawn(pl)
 	pl.inventory = {}
 	pl.garrymons = {}
     quest.createQuestLog( pl )
+    self:SetPlayerScale( pl, 0.85 )
 
     timer.Simple( 1, function()
         quest.giveToPlayer( pl, "quest1.1" )
@@ -62,7 +65,7 @@ end
 function GM:ShouldCollide( ent1, ent2 )
     if ent1.transmitToPlayers and not table.HasValue( ent1.transmitToPlayers, ent2 ) then
         return false
-    elseif ent2.transmitToPlayers and not table.HasValue( ent2.transmitToPlayers, ent2 ) then
+    elseif ent2.transmitToPlayers and not table.HasValue( ent2.transmitToPlayers, ent1 ) then
         return false
     end
     return true
