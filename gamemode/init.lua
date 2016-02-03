@@ -18,7 +18,9 @@ include("transmission.lua")
 
 -- Add resources here
 --resource.AddFile("materials/ttd/rail.vmt")
-
+resource.AddFile("models/rtbmodels/pokemon/items/pokeball_medium.mdl")
+resource.AddFile("materials/models/rtbmodels/pokemon/items/pokeball.vmt")
+resource.AddSingleFile("materials/models/rtbmodels/pokemon/items/pokeball_n.vtf")
 
 util.AddNetworkString( "gmon.ChatMessage" )
 
