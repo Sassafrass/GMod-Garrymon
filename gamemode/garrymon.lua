@@ -337,8 +337,8 @@ GM.garrymons = {
 		    {37, "Slowbro"} ),
 	Magnemite = Garrymon( "Magnemite", bit.bor(GTYPE_ELECTRIC, GTYPE_STEEL), 25, 35, 70, 95, 55, 45,
           { Ability("Tackle"), Ability("Supersonic", 5), Ability("ThunderShock", 7), Ability("SonicBoom", 11), 
-            Ability("", ), Ability("", ), Ability("", ), Ability("", ), 
-            Ability("", ), Ability("", ), Ability("", ), Ability("", ), 
+            Ability("ThunderWave", 13), Ability("MagnetBomb", 17), Ability("Spark", 19), Ability("MirrorShot", 23), 
+            Ability("MetalSound", 25), Ability("ElectroBall", 29), Ability("", ), Ability("", ), 
             Ability("", ), Ability("", ), Ability("", ), Ability("", ), 
             Ability("", ), })
 

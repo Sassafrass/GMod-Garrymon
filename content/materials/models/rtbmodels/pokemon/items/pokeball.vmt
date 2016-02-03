@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	$baseTexture "models\RTBModels\Pokemon\Items\PokeBall"
+ 	$bumpmap "models\RTBModels\Pokemon\Items\PokeBall_n"
+
+	$halflambert 1
+
+ 	$phong 1
+	$phongboost 2
+	$phongexponent 8
+	$phongfresnelranges "[.15 .35 1]"
+}
