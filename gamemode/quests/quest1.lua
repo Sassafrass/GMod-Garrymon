@@ -4,14 +4,23 @@ QUEST.description = "Find and talk to Professor Newman."
 
 function QUEST:Init()
 	self.super.Init( self )
-	self:RegisterHook( "OnPlayerTalkToNPC" )
-	GAMEMODE:SpawnNPCForPlayer( "professorGarrycenter", self:GetPlayer() )
+	self.messageIndex = 1
+	self.npc = self:RegisterNPC( "professorGarrycenter" )
 end
 
-function QUEST:OnPlayerTalkToNPC(pl, npc)
-	if pl ~= self:GetPlayer() then return end
-	if npc:GetID() == "Professor Newman" then
+function QUEST:OnNPCTalk( npc )
+	if npc:GetID() ~= "Professor Newman" then return end
+	if self.messageIndex == 1 then
+		npc:Say( "Hello! I am the professor." )
+		local layerID = npc:AddGestureSequence( npc:LookupSequence("Wave") )
+		npc:SetLayerWeight( layerID, 0.0 )
+		npc:SetLayerBlendIn( layerID, 0.5 )
+		npc:SetLayerBlendOut( layerID, 0.5 )
+		self.messageIndex = 2
+		return NPC_TALK_YIELD
+	else
 		self:Complete()
+		return NPC_TALK_FINAL
 	end
 end
 
@@ -33,11 +42,19 @@ QUEST.description = "Choose a starter Garrymon."
 function QUEST:Init()
 	self.super.Init( self )
 	self:RegisterHook( "OnPlayerCaptureGarrymon" )
-	GAMEMODE:SpawnNPCForPlayer( "professorGarrycenter", self:GetPlayer() )
+	self.npc = self:RegisterNPC( "professorGarrycenter" )
+	self.npc:Say( "Please choose your starter Garrymon." )
+end
+
+function QUEST:OnNPCTalk( npc )
+	if npc:GetID() ~= "Professor Newman" then return end
+	npc:Say( "We can continue after you've made your decision." )
+	return NPC_TALK_END
 end
 
 function QUEST:OnPlayerCaptureGarrymon( pl, garrymon )
 	if pl ~= self:GetPlayer() then return end
+	self.npc:Say( "Excellent choice!" )
 	self:Complete()
 end
 

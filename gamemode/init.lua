@@ -20,6 +20,8 @@ include("transmission.lua")
 --resource.AddFile("materials/ttd/rail.vmt")
 
 
+util.AddNetworkString( "gmon.ChatMessage" )
+
 util.AddNetworkString( "PlayerInitialSpawn" )
 function GM:PlayerInitialSpawn(pl)
 	pl.inventory = {}

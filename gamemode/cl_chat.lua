@@ -12,19 +12,35 @@ local messages = {}
 local chatBGColor = Color( 255, 255, 255, 255 )
 local chatColor = Color( 0, 0, 0, 255 )
 
+local function MessagePushOtherMessages( message, j, messageCount )
+	for i = j, 1, -1 do
+		local msg = messages[i]
+		if math.abs(msg.pos.z - message.pos.z) < 6 and
+			msg.pos:Distance( message.pos ) < (msg.width + message.width) * 0.5 * 0.075 then
+			msg.pos = msg.pos + (message.height + 32) * 0.075 * VECTOR_UP
+			MessagePushOtherMessages( msg, i - 1, messageCount )
+		end
+	end
+end
+
 local function Message( text, pos )
 	pos = pos + VECTOR_UP * 16
 	local message = {}
 	message.text = text
+
 	message.pos = pos
 	message.currpos = pos
+
 	message.startTime = CurTime()
-	message.appearDuration = string.len( text ) * 0.1
-	message.endTime = message.startTime + math.max(message.appearDuration * 2, 5)
-	for i, message in pairs( messages ) do
-		message.pos = message.pos + VECTOR_UP * 12
-	end
+	message.appearDuration = string.len( text ) * 0.05
+	message.endTime = message.startTime + math.max(message.appearDuration * 3, 5)
+
+	surface.SetFont( "GarrymonChat" )
+	message.width, message.height = surface.GetTextSize( text )
+
 	table.insert( messages, message )
+	MessagePushOtherMessages( message, #messages, #messages )
+
 end
 
 local function MessageUpdate( message )
@@ -47,14 +63,14 @@ local function MessageRender( message, eyePos )
 
 	cam.Start3D2D( message.currpos, ang, 0.075 )
 
-		local width, height = surface.GetTextSize( messageText )
+		local width, height = message.width, message.height
 		local padding = 8
 		draw.RoundedBox( 4, -0.5 * width - padding - 4, -0.5 * height - padding, 
 			width + padding * 2 + 8, height + padding * 2, chatColor )
 		local padding = 4
 		draw.RoundedBox( 4, -0.5 * width - padding - 4, -0.5 * height - padding, 
 			width + padding * 2 + 8, height + padding * 2, chatBGColor )
-		draw.SimpleText( messageText, "GarrymonChat", 0, 0, chatColor, 1, 1 )
+		draw.SimpleText( messageText, "GarrymonChat", -0.5 * width, 0, chatColor, 0, 1 )
 
 	cam.End3D2D()
 
@@ -72,10 +88,7 @@ function GM:UpdateMessages()
 	local messageOffset = 0
 	for i, message in ipairs(messages) do
 		if MessageUpdate( message ) then
-			message.pos = message.pos + VECTOR_UP * messageOffset
 			table.insert( newmessages, message )
-		else
-			messageOffset = messageOffset + 12
 		end
 	end
 	messages = newmessages
@@ -89,7 +102,7 @@ function GM:HUDPaint()
 	cam.IgnoreZ( true )
 	cam.Start3D()
 		for i, message in ipairs(messages) do
-				MessageRender( message, eyePos )
+			MessageRender( message, eyePos )
 		end
 	cam.End3D()
 	cam.IgnoreZ( false )

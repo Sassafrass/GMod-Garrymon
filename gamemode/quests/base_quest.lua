@@ -13,15 +13,19 @@ function QUEST:GetDescription()
 end
 
 function QUEST:Init()
-	self.hooks = {}
+	self._hooks = {}
+	self._npcs = {}
 end
 
 function QUEST:OnComplete()
 end
 
 function QUEST:Unload()
-	for hookName, _ in pairs( self.hooks ) do
+	for hookName, _ in pairs( self._hooks ) do
 		hook.Remove( hookName, self )
+	end
+	for npc, _ in pairs( self._npcs ) do
+		GAMEMODE:NPCUnregisterTalker( npc, self )
 	end
 end
 
@@ -30,8 +34,16 @@ function QUEST:__tostring()
 end
 
 function QUEST:RegisterHook( hookName )
-	self.hooks[hookName] = true
+	self._hooks[hookName] = true
 	hook.Add( hookName, self, self[hookName] )
 end
+
+function QUEST:RegisterNPC( npcKey )
+	local npc = GAMEMODE:SpawnNPCForPlayer( npcKey, self:GetPlayer() )
+	GAMEMODE:NPCRegisterTalker( npc, self )
+	self._npcs[npc] = true
+	return npc
+end
+
 
 quest.register( "base_quest", QUEST )

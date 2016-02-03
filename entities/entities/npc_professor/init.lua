@@ -12,12 +12,16 @@ end
 
 function ENT:Use( activator, caller, type, value )
 	if activator:IsPlayer() then
-		gamemode.Call( "OnPlayerTalkToNPC", activator, self )
-		local layerID = self:AddGestureSequence( self:LookupSequence("Wave") )
-		self:SetLayerWeight( layerID, 0.0 )
-		self:SetLayerBlendIn( layerID, 0.5 )
-		self:SetLayerBlendOut( layerID, 0.5 )
+		GAMEMODE:PlayerTalkToNPC( activator, self )
 	end
+end
+
+function ENT:Say( text )
+	local headPos = self:GetBonePosition(self:LookupBone("ValveBiped.Bip01_Head1"))
+	net.Start( "gmon.ChatMessage" )
+		net.WriteString( text )
+		net.WriteVector( headPos )
+	net.Send( self.transmitToPlayers )
 end
 
 function ENT:GetYawPitch(vec)

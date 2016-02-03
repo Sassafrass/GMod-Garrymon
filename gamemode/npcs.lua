@@ -1,3 +1,7 @@
+NPC_TALK_YIELD = 1 -- THE NPC HAS MORE TO SAY
+NPC_TALK_END = 2 -- THE NPC HAS SAID WHAT HE NEEDS TO SAY
+NPC_TALK_FINAL = 3 -- THE NPC HAS NO MORE TO SAY
+
 local npcTemplates = {}
 npcTemplates["professorGarrycenter"] = {
 	class = "npc_professor",
@@ -37,11 +41,32 @@ function GM:SpawnNPCs()
 	
 end
 
-util.AddNetworkString( "gmon.ChatMessage" )
-function GM:OnPlayerTalkToNPC( pl, npc )
-	local headPos = npc:GetBonePosition(npc:LookupBone("ValveBiped.Bip01_Head1"))
-	net.Start( "gmon.ChatMessage" )
-		net.WriteString( "Hello. I am the professor." )
-		net.WriteVector( headPos )
-	net.Send( pl )
+function GM:NPCRegisterTalker( npc, talker )
+	npc.talkers = npc.talkers or {}
+	npc.talkerIndex = npc.talkerIndex or 1
+	table.insert( npc.talkers, talker )
+end
+
+function GM:NPCUnregisterTalker( npc, talker )
+	if npc.talkers[npc.talkerIndex] == talker then
+		npc.talkerIndex = 1
+	end
+	table.RemoveByValue( npc.talkers, talker )
+end
+
+function GM:PlayerTalkToNPC( pl, npc )
+
+	if not npc.talkers then return end
+
+	local startIndex = npc.talkerIndex
+	repeat
+		local talkStatus = npc.talkers[npc.talkerIndex]:OnNPCTalk( npc, pl )
+		if talkStatus ~= NPC_TALK_YIELD then
+			break
+		else
+			npc.talkerIndex = (npc.talkerIndex % #npc.talkers) + 1
+			if talkStatus == NPC_TALK_END then break end
+		end
+	until npc.talkerIndex == startIndex
+
 end
