@@ -78,6 +78,8 @@ gtypeToString[GTYPE_DRAGON]		= "dragon"
 gtypeToString[GTYPE_DARK]		= "dark"
 gtypeToString[GTYPE_FAIRY]		= "fairy"
 
+garrymon = {}
+
 local function countSetBits( i )
 	i = i - bit.band(bit.rshift(i, 1), 0x55555555)
     i = bit.band(i, 0x33333333) + bit.band(bit.rshift(i, 2), 0x33333333)
@@ -150,6 +152,23 @@ local function EvolvedGarrymon( name, base, hp, attack, defense, spattack, spdef
 	return Garrymon( name, b.gtype, hp, attack, defense, spattack, spdefense, speed, b.abilities, b.evolves )
 end
 
+function garrymon.Create( classKey )
+	return table.Copy(GAMEMODE.garrymons[classKey])
+end
+
+function GM:PlayerCaptureGarrymon( pl, garrymon )
+	local ghand = pl:GetGHand()
+	if ghand:IsFull() then
+		-- Add to collection instead
+	else
+		ghand:AddGarrymon( garrymon )
+	end
+	pl:ChatPrint( "You got " .. garrymon.name )
+	gamemode.Call( "OnPlayerCaptureGarrymon", pl, garrymon )
+end
+
+function GM:OnPlayerCaptureGarrymon( pl, garrymon )
+end
 
 GM.garrymons = {
     Muberry = Garrymon( "Muberry", bit.bor(GTYPE_GRASS, GTYPE_POISON), 45, 49, 49, 65, 65, 45, 

@@ -12,6 +12,7 @@ include("shared.lua")
 include("items.lua")
 include("abilities.lua")
 include("garrymon.lua")
+include("garrymon_hand.lua")
 include("npcs.lua")
 include("quests.lua")
 include("transmission.lua")
@@ -27,8 +28,9 @@ util.AddNetworkString( "gmon.ChatMessage" )
 util.AddNetworkString( "PlayerInitialSpawn" )
 function GM:PlayerInitialSpawn(pl)
 	pl.inventory = {}
-	pl.garrymons = {}
     quest.createQuestLog( pl )
+    self:CreateGHand( pl )
+
     self:SetPlayerScale( pl, 0.85 )
 
     timer.Simple( 1, function()
@@ -38,14 +40,6 @@ function GM:PlayerInitialSpawn(pl)
     net.Start( "PlayerInitialSpawn" )
         net.WriteString( pl:GetName() )
     net.Send( pl )
- 
- 	if not self.thread then
-		self.thread = coroutine.create( self.Loop )
-		local ok, res = coroutine.resume( self.thread, self )
-	    if not ok then
-	        pl:ChatPrint( res )
-	    end
-	end
 
     self:TransmitPlayerInit(pl)
 end

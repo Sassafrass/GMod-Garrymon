@@ -14,7 +14,7 @@ AccessorFunc( QuestLog, "id", "ID" )
 function QuestLog:Init( pl )
 	self.completed = {}
 	self.quests = {}
-	pl.questLog = self
+	pl:SetQuestLog( self )
 	self:SetPlayer( pl )
 	self:SetID( pl:SteamID() )
 	self.completeInternal = function( q )
@@ -43,14 +43,15 @@ end
 
 util.AddNetworkString( "QuestLog:CompletedQuest" )
 function QuestLog:Complete( q )
-	table.RemoveByValue( self.quests, q )
+	local index = table.RemoveByValue( self.quests, q )
+	net.Start( "QuestLog:CompletedQuest" )
+		--net.WriteString( q.name )
+		net.WriteInt( index, 16 )
+	net.Send( self:GetPlayer() )
 	self.completed[q.name] = true
 	q:OnComplete()
 	q:Unload()
 	gamemode.Call( "OnPlayerCompletedQuest", self:GetPlayer(), q.name )
-	net.Start( "QuestLog:CompletedQuest" )
-		net.WriteString( q.name )
-	net.Send( self:GetPlayer() )
 end
 
 function QuestLog:Unload()
@@ -77,15 +78,20 @@ function quest.createQuestLog( pl )
 	local ql = {}
 	setmetatable( ql, QuestLog_mt )
 	ql:Init( pl )
-	return ql
 end
 
 function quest.giveToPlayer( pl, questName )
-	pl.questLog:AddQuest( questName )
+	pl:GetQuestLog():AddQuest( questName )
 end
 
 function GM:OnPlayerCompletedQuest( pl, questName )
 end
+
+local META = FindMetaTable("Player")
+if META then
+	AccessorFunc( META, "questlog", "QuestLog" )
+end
+META = nil
 
 include("quests/base_quest.lua")
 include("quests/quest1.lua")

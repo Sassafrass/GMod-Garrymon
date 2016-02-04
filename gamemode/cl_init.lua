@@ -16,6 +16,13 @@ surface.CreateFont( "GarrymonLarge",
 	weight		= 500
 })
 
+surface.CreateFont( "GarrymonMedium",
+{
+	font		= "Roboto",
+	size		= ScreenScale(10),
+	weight		= 500
+})
+
 include("cl_chat.lua")
 include("cl_battleinfo.lua")
 include("cl_quests.lua")
@@ -69,6 +76,11 @@ end
 
 function GM:IsEntityHot( ent )
 	return hot == ent
+end
+
+function GM:HUDPaint()
+	self:ChatPaint()
+	quest.Paint()
 end
 
 ------------------------------------------------

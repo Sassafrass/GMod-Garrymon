@@ -63,6 +63,12 @@ function QUEST:Init()
 	self.balls[3]:SetID( "Water" )
 end
 
+local starters = {
+	Grass = "Muberry",
+	Fire = "Firedash",
+	Water = "Umlaut",
+}
+
 local waitForChoiceMessages = {
 	"We can continue after you've made your decision.",
 	"Please choose your garrymon.",
@@ -92,7 +98,13 @@ function QUEST:PlayerUseInteractive( pl, ent )
 	if pl ~= self:GetPlayer() then return end
 	if table.HasValue( self.balls, ent ) then
 		if self.selectedBall then
-			self.selectedBall:SetSelected( false )
+			if self.selectedBall == ent then
+				local gmon = garrymon.Create( starters[ent:GetID()] )
+				GAMEMODE:PlayerCaptureGarrymon( self:GetPlayer(), gmon )
+				return
+			else
+				self.selectedBall:SetSelected( false )
+			end
 		end
 		self.npcChatIndex = (self.npcChatIndex % #confirmations) + 1
 		self.npc:Say( confirmations[self.npcChatIndex] )

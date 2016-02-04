@@ -52,6 +52,9 @@ function GM:NPCUnregisterTalker( npc, talker )
 		npc.talkerIndex = 1
 	end
 	table.RemoveByValue( npc.talkers, talker )
+	if #npc.talkers == 0 then
+		npc.talkers = nil
+	end
 end
 
 function GM:PlayerTalkToNPC( pl, npc )

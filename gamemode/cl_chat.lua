@@ -94,7 +94,7 @@ function GM:UpdateMessages()
 	messages = newmessages
 end
 
-function GM:HUDPaint()
+function GM:ChatPaint()
 	self:UpdateMessages()
 	local eyePos = EyePos()
 	surface.SetFont( "GarrymonChat" )
