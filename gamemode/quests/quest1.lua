@@ -39,16 +39,40 @@ local QUEST = {}
 
 QUEST.description = "Choose a starter Garrymon."
 
+local countertopPosition = Vector( 769.336792, 1093.160522, 40.031250 )
+
 function QUEST:Init()
 	self.super.Init( self )
 	self:RegisterHook( "OnPlayerCaptureGarrymon" )
+	self:RegisterHook( "PlayerUseInteractive" )
 	self.npc = self:RegisterNPC( "professorGarrycenter" )
 	self.npc:Say( "Please choose your starter Garrymon." )
+	self.npcChatIndex = 1
+	self.balls = {}
+	for i = 1, 3 do
+		local ball = ents.Create("garryball")
+		ball:SetPos( Vector( countertopPosition.x + (i - 2) * 16, countertopPosition.y, countertopPosition.z + 2.7 ) )
+		GAMEMODE:MakeEntityCustomTransmit( ball )
+		ball:AddPlayerToTransmit( self:GetPlayer() )
+		ball:Spawn()
+		ball:Activate()
+		table.insert( self.balls, ball )
+	end
+	self.balls[1]:SetID( "Grass" )
+	self.balls[2]:SetID( "Fire" )
+	self.balls[3]:SetID( "Water" )
 end
 
+local waitForChoiceMessages = {
+	"We can continue after you've made your decision.",
+	"Please choose your garrymon.",
+	"Use the garryball you wish to choose.",
+	"Hurry up kid, make up your mind.",
+}
 function QUEST:OnNPCTalk( npc )
 	if npc:GetID() ~= "Professor Newman" then return end
-	npc:Say( "We can continue after you've made your decision." )
+	self.npcChatIndex = (self.npcChatIndex % #waitForChoiceMessages) + 1
+	self.npc:Say( waitForChoiceMessages[self.npcChatIndex] )
 	return NPC_TALK_END
 end
 
@@ -58,9 +82,30 @@ function QUEST:OnPlayerCaptureGarrymon( pl, garrymon )
 	self:Complete()
 end
 
+local confirmations = {
+	"Are you sure?",
+	"Is this the one?",
+	"Choose it again to confirm your decision."
+}
+
+function QUEST:PlayerUseInteractive( pl, ent )
+	if pl ~= self:GetPlayer() then return end
+	if table.HasValue( self.balls, ent ) then
+		if self.selectedBall then
+			self.selectedBall:SetSelected( false )
+		end
+		self.npcChatIndex = (self.npcChatIndex % #confirmations) + 1
+		self.npc:Say( confirmations[self.npcChatIndex] )
+		self.selectedBall = ent
+		ent:SetSelected( true )
+	end
+end
+
 function QUEST:Unload()
 	self.super.Unload( self )
-	hook.Remove( "OnPlayerCaptureGarrymon", self )
+	for _, ball in pairs( self.balls ) do
+		ball:Remove()
+	end
 end
 
 quest.register( "quest1.2", QUEST )

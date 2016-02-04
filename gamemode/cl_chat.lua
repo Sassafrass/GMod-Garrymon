@@ -18,17 +18,17 @@ local function MessagePushOtherMessages( message, j, messageCount )
 		if math.abs(msg.pos.z - message.pos.z) < 6 and
 			msg.pos:Distance( message.pos ) < (msg.width + message.width) * 0.5 * 0.075 then
 			msg.pos = msg.pos + (message.height + 32) * 0.075 * VECTOR_UP
+			msg.startTime = msg.startTime - msg.appearDuration
 			MessagePushOtherMessages( msg, i - 1, messageCount )
 		end
 	end
 end
 
 local function Message( text, pos )
-	pos = pos + VECTOR_UP * 16
 	local message = {}
 	message.text = text
 
-	message.pos = pos
+	message.pos = pos + VECTOR_UP * 10
 	message.currpos = pos
 
 	message.startTime = CurTime()
@@ -39,7 +39,7 @@ local function Message( text, pos )
 	message.width, message.height = surface.GetTextSize( text )
 
 	table.insert( messages, message )
-	MessagePushOtherMessages( message, #messages, #messages )
+	MessagePushOtherMessages( message, #messages - 1, #messages )
 
 end
 

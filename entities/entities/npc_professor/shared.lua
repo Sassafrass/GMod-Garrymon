@@ -1,4 +1,5 @@
 ENT.Base = "base_nextbot"
+ENT.Interactable	= true
 
 function ENT:SetupDataTables()
 

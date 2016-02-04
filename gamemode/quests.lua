@@ -41,12 +41,16 @@ function QuestLog:AddQuest( name )
 	net.Send( self:GetPlayer() )
 end
 
+util.AddNetworkString( "QuestLog:CompletedQuest" )
 function QuestLog:Complete( q )
 	table.RemoveByValue( self.quests, q )
 	self.completed[q.name] = true
 	q:OnComplete()
 	q:Unload()
 	gamemode.Call( "OnPlayerCompletedQuest", self:GetPlayer(), q.name )
+	net.Start( "QuestLog:CompletedQuest" )
+		net.WriteString( q.name )
+	net.Send( self:GetPlayer() )
 end
 
 function QuestLog:Unload()
