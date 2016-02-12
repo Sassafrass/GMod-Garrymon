@@ -1,27 +1,29 @@
+local professorPos = Vector(768.174133, 1137.295044, 0.031250)
+local professorAng = Angle(0, -90, 0)
+
+
+------------------------------------
+-- QUEST 1.1
+------------------------------------
+
 local QUEST = {}
 
 QUEST.description = "Find and talk to Professor Newman."
 
 function QUEST:Init()
 	self.super.Init( self )
-	self.messageIndex = 1
-	self.npc = self:RegisterNPC( "professorGarrycenter" )
+	self.npc = self:RegisterNPC( "professor", self.ControlProfessor, function(npc)
+	    npc:SetPos( professorPos )
+	    npc:SetAngles( professorAng )
+	end )
 end
 
-function QUEST:OnNPCTalk( npc )
-	if npc:GetID() ~= "Professor Newman" then return end
-	if self.messageIndex == 1 then
-		npc:Say( "Hello! I am the professor." )
-		local layerID = npc:AddGestureSequence( npc:LookupSequence("Wave") )
-		npc:SetLayerWeight( layerID, 0.0 )
-		npc:SetLayerBlendIn( layerID, 0.5 )
-		npc:SetLayerBlendOut( layerID, 0.5 )
-		self.messageIndex = 2
-		return NPC_TALK_YIELD
-	else
-		self:Complete()
-		return NPC_TALK_FINAL
-	end
+function QUEST:ControlProfessor( prof )
+	prof:WaitForTalk()
+	prof:Say( "Hello! I am the professor" )
+	prof:PlaySequenceAndWait("Wave")
+	prof:WaitForTalk()
+	self:Complete()
 end
 
 function QUEST:OnComplete()
@@ -35,6 +37,10 @@ end
 quest.register( "quest1.1", QUEST )
 
 
+------------------------------------
+-- QUEST 1.2
+------------------------------------
+
 local QUEST = {}
 
 QUEST.description = "Choose a starter Garrymon."
@@ -43,11 +49,15 @@ local countertopPosition = Vector( 769.336792, 1093.160522, 40.031250 )
 
 function QUEST:Init()
 	self.super.Init( self )
-	self:RegisterHook( "OnPlayerCaptureGarrymon" )
 	self:RegisterHook( "PlayerUseInteractive" )
-	self.npc = self:RegisterNPC( "professorGarrycenter" )
-	self.npc:Say( "Please choose your starter Garrymon." )
+
 	self.npcChatIndex = 1
+	self.npc = self:RegisterNPC( "professor", self.ControlProfessor, function(npc)
+	    npc:SetPos( professorPos )
+	    npc:SetAngles( professorAng )
+	end )
+
+	self.npc:Say( "Please choose your starter Garrymon." )
 	self.balls = {}
 	for i = 1, 3 do
 		local ball = ents.Create("garryball")
@@ -75,17 +85,14 @@ local waitForChoiceMessages = {
 	"Use the garryball you wish to choose.",
 	"Hurry up kid, make up your mind.",
 }
-function QUEST:OnNPCTalk( npc )
-	if npc:GetID() ~= "Professor Newman" then return end
-	self.npcChatIndex = (self.npcChatIndex % #waitForChoiceMessages) + 1
-	self.npc:Say( waitForChoiceMessages[self.npcChatIndex] )
-	return NPC_TALK_END
-end
 
-function QUEST:OnPlayerCaptureGarrymon( pl, garrymon )
-	if pl ~= self:GetPlayer() then return end
-	self.npc:Say( "Excellent choice!" )
-	self:Complete()
+function QUEST:ControlProfessor( prof )
+	local messageIndex = 1
+	while true do
+		prof:WaitForTalk()
+		messageIndex = (messageIndex % #waitForChoiceMessages) + 1
+		prof:Say( waitForChoiceMessages[messageIndex] )
+	end
 end
 
 local confirmations = {
@@ -101,6 +108,9 @@ function QUEST:PlayerUseInteractive( pl, ent )
 			if self.selectedBall == ent then
 				local gmon = garrymon.Create( starters[ent:GetID()] )
 				GAMEMODE:PlayerCaptureGarrymon( self:GetPlayer(), gmon )
+				self.npc:Say( "Excellent choice!" )
+				self.npc:SetTalk(false)
+				self:Complete()
 				return
 			else
 				self.selectedBall:SetSelected( false )
@@ -113,6 +123,11 @@ function QUEST:PlayerUseInteractive( pl, ent )
 	end
 end
 
+function QUEST:OnComplete()
+	quest.giveToPlayer( self:GetPlayer(), "quest1.3" )
+end
+
+
 function QUEST:Unload()
 	self.super.Unload( self )
 	for _, ball in pairs( self.balls ) do
@@ -121,3 +136,67 @@ function QUEST:Unload()
 end
 
 quest.register( "quest1.2", QUEST )
+
+------------------------------------
+-- QUEST 1.3
+------------------------------------
+
+local QUEST = {}
+
+QUEST.hidden = true
+QUEST.description = "Javier talks to professor."
+
+local javierPos = Vector(987.121765, 1255.026367, 0.031250)
+
+function QUEST:Init()
+	self.super.Init( self )
+
+	self.professor = self:RegisterNPC( "professor", self.ControlProfessor, function(npc)
+	    npc:SetPos( professorPos )
+	    npc:SetAngles( professorAng )
+	end )
+
+	self.javier = self:RegisterNPC( "javier", self.ControlJavier, function(npc)
+		npc:SetPos( javierPos )
+	end )
+
+end
+
+function QUEST:ControlProfessor( prof )
+end
+
+
+util.AddNetworkString( "gmon.LookAt" )
+function QUEST:ControlJavier( javier )
+
+	javier:StartActivity( ACT_RUN )
+	javier.loco:SetDesiredSpeed( 300 )
+
+	net.Start( "gmon.LookAt" )
+		net.WriteEntity( javier )
+	net.Send( self:GetPlayer() )
+	javier:MoveToPos( Vector(847.167847, 1070.160889, 0.031250) )
+	javier:StartActivity( ACT_IDLE )
+    javier:Say( "Yo pops, let me get my garrymon!" )
+    javier:WaitForTalk()
+    javier:FaceNearestPlayer()
+    javier:Say( "Who the fuck are you?" )
+    javier:WaitForTalk()
+    javier:SetID("Javier")
+    javier:Say( "I'm Javier. Want to fight?" )
+    javier:WaitForTalk()
+
+end
+
+function QUEST:Run()
+	self:WaitFor(NPCToReachTarget)
+end
+
+function QUEST:Unload()
+	self.super.Unload( self )
+	for _, ball in pairs( self.balls ) do
+		ball:Remove()
+	end
+end
+
+quest.register( "quest1.3", QUEST )

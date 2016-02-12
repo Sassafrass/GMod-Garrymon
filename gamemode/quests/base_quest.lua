@@ -25,7 +25,7 @@ function QUEST:Unload()
 		hook.Remove( hookName, self )
 	end
 	for npc, _ in pairs( self._npcs ) do
-		GAMEMODE:NPCUnregisterTalker( npc, self )
+		npc:RemoveController( self )
 	end
 end
 
@@ -38,9 +38,9 @@ function QUEST:RegisterHook( hookName )
 	hook.Add( hookName, self, self[hookName] )
 end
 
-function QUEST:RegisterNPC( npcKey )
-	local npc = GAMEMODE:SpawnNPCForPlayer( npcKey, self:GetPlayer() )
-	GAMEMODE:NPCRegisterTalker( npc, self )
+function QUEST:RegisterNPC( npcKey, controller, setup )
+	local npc = GAMEMODE:SpawnNPCForPlayer( npcKey, self:GetPlayer(), setup )
+	npc:AddController( self, controller )
 	self._npcs[npc] = true
 	return npc
 end

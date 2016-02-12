@@ -27,6 +27,7 @@ end
 local function Message( text, pos )
 	local message = {}
 	message.text = text
+	print( text )
 
 	message.pos = pos + VECTOR_UP * 10
 	message.currpos = pos

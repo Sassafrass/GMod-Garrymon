@@ -2,6 +2,7 @@ local transmitEntities = {}
 
 local function removePlayerFromTransmit( ent, pl )
 	print( ent, " Removing player from transmit ", pl )
+	if not IsValid( ent ) then return end
 	ent:SetPreventTransmit( pl, true )
 	table.RemoveByValue( ent.transmitToPlayers, pl )
 	if #ent.transmitToPlayers == 0 then

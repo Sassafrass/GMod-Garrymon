@@ -45,14 +45,16 @@ function GM:PlayerInitialSpawn(pl)
 end
 
 function GM:FindUseEntity( pl, default )
-    local tr = util.TraceLine{
+    local tr = util.TraceHull{
         start = pl:EyePos(),
         endpos = pl:EyePos() + pl:GetAimVector() * 95,
         filter = function( ent )
             if ent:IsPlayer() then return false end
             if ent.transmitToPlayers and not table.HasValue( ent.transmitToPlayers, pl ) then return false end
             return true
-        end
+        end,
+        mins = Vector( -5, -5, -5 ),
+        maxs = Vector( 5, 5, 5 )
     }
     local hitEnt = tr.Entity
     if( IsValid( hitEnt ) and hitEnt.Interactable ) then
@@ -65,7 +67,7 @@ end
 
 function GM:PlayerSpawn(pl)
 
-	pl:SetModel( "models/player/kleiner.mdl" )
+	pl:SetModel( "models/player/Group03/female_02.mdl" )
 
 end
 

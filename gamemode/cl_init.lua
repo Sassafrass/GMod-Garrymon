@@ -63,7 +63,7 @@ function GM:PreDrawHalos()
 		filter = player.GetAll()
 	}
 	local hitEnt = tr.Entity
-	if( IsValid( hitEnt ) and hitEnt.Interactable ) then
+	if( IsValid( hitEnt ) and hitEnt.Interactable and (not hitEnt.GetTalk or hitEnt:GetTalk()) ) then
 		if not hot or hot ~= hitEnt then
 			hot = hitEnt
 			surface.PlaySound( "ui/buttonrollover.wav" )
@@ -115,3 +115,30 @@ function GM:RenderNameTag( name, pos, scale, bounce )
 end
 --
 ------------------------------------------------
+
+local lookAt = NULL
+local lookAtTime = -2
+local lookAtDuration = 2
+local lookAtStart
+local lookAtSmoother
+
+net.Receive( "gmon.LookAt", function( len ) 
+	local target = net.ReadEntity()
+	if IsValid(target) then
+		lookAt = target
+		lookAtTime = RealTime()
+		lookAtStart = EyeAngles()
+		lookAtSmoother = lookAt:LocalToWorld( lookAt:OBBCenter() )
+	end
+end )
+
+
+function GM:CreateMove( cmd )
+	if RealTime() < lookAtTime + lookAtDuration and IsValid(lookAt) then
+		cmd:ClearMovement()
+		local t = math.Clamp((RealTime() - lookAtTime) / lookAtDuration, 0, 1)
+		lookAtSmoother = LerpVector( 1 - math.pow(0.0001, FrameTime()), lookAtSmoother, lookAt:LocalToWorld( lookAt:OBBCenter() ) )
+		local ang = (lookAtSmoother - EyePos()):Angle()
+		cmd:SetViewAngles( LerpAngle( t, lookAtStart, ang ) )
+	end
+end
